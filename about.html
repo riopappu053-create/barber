@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blade & Beard · About Us</title>
+    <link rel="icon" type="image/jpeg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d2d2d' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='%23d4a373' font-family='Arial'%3E✂%3C/text%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Poppins"', 'sans-serif'],
+                    },
+                    colors: {
+                        barber: {
+                            50: '#f5f0eb',
+                            100: '#e5dcd3',
+                            200: '#d4c4b8',
+                            300: '#c4ac9c',
+                            400: '#b39480',
+                            500: '#a37c64',
+                            600: '#8b6650',
+                            700: '#73503c',
+                            800: '#5b3d2e',
+                            900: '#432a20',
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f6f3;
+            color: #1a1a1a;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #f8f6f3;
+            --bg-secondary: #f0ebe6;
+            --bg-card: #ffffff;
+            --bg-inverted: #1a1a1a;
+            --text-main: #1a1a1a;
+            --text-muted: #4a3f3a;
+            --text-dim: #7a6f6a;
+            --accent-color: #8b6650;
+            --accent-dark: #5b3d2e;
+            --accent-light: #f0ebe6;
+            --border-color: #d4c4b8;
+            --border-light: rgba(139, 102, 80, 0.15);
+            --nav-bg: rgba(255, 255, 255, 0.92);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(139, 102, 80, 0.08);
+            --shadow-color: rgba(139, 102, 80, 0.08);
+            --success-color: #4a3021;
+        }
+
+        body.dark-mode {
+            --bg-color: #0f0a08;
+            --bg-secondary: #1a1210;
+            --bg-card: #241c18;
+            --bg-inverted: #f0ebe6;
+            --text-main: #e8ddd8;
+            --text-muted: #b0a098;
+            --text-dim: #7a6a60;
+            --accent-color: #d4a373;
+            --accent-dark: #b4835a;
+            --accent-light: #2a1e18;
+            --border-color: #3a2a22;
+            --border-light: rgba(212, 163, 115, 0.15);
+            --nav-bg: rgba(15, 10, 8, 0.92);
+            --drawer-bg: rgba(15, 10, 8, 0.98);
+            --menu-hover-bg: rgba(212, 163, 115, 0.10);
+            --shadow-color: rgba(212, 163, 115, 0.06);
+            --success-color: #d4a373;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1,
+        h2,
+        .brand-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700 !important;
+            letter-spacing: -0.01em;
+        }
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600 !important;
+            letter-spacing: -0.01em;
+        }
+        p {
+            font-weight: 400 !important;
+            line-height: 1.7;
+        }
+        b,
+        strong,
+        .font-bold {
+            font-weight: 700 !important;
+        }
+        .font-extrabold {
+            font-weight: 700 !important;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 52px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            margin: 0 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== DROPDOWN (Desktop) ===== */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 58px;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        .navbar.scrolled .dropdown-menu {
+            top: 52px;
+        }
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            min-width: 200px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+        body.light-mode .dropdown-inner {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 22px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            text-align: left;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        .dropdown-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-color);
+            padding-left: 28px;
+        }
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 22px;
+            padding-right: 28px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+            border-radius: 8px;
+            gap: 8px;
+        }
+        .btn-solid {
+            background: var(--accent-color);
+            color: #FFFFFF !important;
+        }
+        .btn-solid:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 102, 80, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-link:hover {
+            color: var(--accent-color);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+
+        /* ===== MOBILE ACTIVE LINK STYLES ===== */
+        .mobile-link.active,
+        .mobile-dropdown-link.active {
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg) !important;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 33px !important;
+        }
+        [dir="rtl"] .mobile-link.active,
+        [dir="rtl"] .mobile-dropdown-link.active {
+            border-left: none;
+            border-right: 3px solid var(--accent-color);
+            padding-left: 28px !important;
+            padding-right: 33px !important;
+        }
+        /* Keep dropdown header open if child is active */
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== MOBILE DROPDOWN ===== */
+        .mobile-dropdown {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+        .mobile-dropdown-header:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            padding-left: 16px;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 500 !important;
+            color: var(--text-muted) !important;
+        }
+        .mobile-dropdown-link:hover {
+            color: var(--accent-color) !important;
+            padding-left: 36px !important;
+            background: var(--menu-hover-bg) !important;
+        }
+        [dir="rtl"] .mobile-dropdown-link:hover {
+            padding-left: 28px !important;
+            padding-right: 36px !important;
+        }
+
+        /* ===== BRAND ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .brand-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(139, 102, 80, 0.3);
+            background: rgba(139, 102, 80, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .brand-icon-wrapper:hover {
+            background: rgba(139, 102, 80, 0.25);
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        .brand-logo span {
+            color: var(--accent-color);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 1px solid var(--border-light);
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.15;
+        }
+        .section-title span {
+            color: var(--accent-color);
+        }
+        .section-sub {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FOOTER — ALWAYS DARK ===== */
+        footer {
+            background: #0f0a08 !important;
+            border-top: 1px solid #2a1e18 !important;
+            padding-top: 60px;
+            color: #e8ddd8 !important;
+        }
+        footer h4 {
+            color: #e8ddd8 !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        footer a,
+        footer li,
+        footer span:not(.brand-logo span) {
+            color: #b0a098 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: #d4a373 !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #2a1e18 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #b0a098 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: #d4a373 !important;
+            border-color: #d4a373 !important;
+            color: #0f0a08 !important;
+            transform: translateY(-3px);
+        }
+        footer .footer-bottom {
+            border-top: 1px solid #2a1e18 !important;
+            padding: 24px 0;
+            margin-top: 40px;
+        }
+        footer .footer-bottom p {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a:hover {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-icon-wrapper {
+            border-color: rgba(212, 163, 115, 0.3) !important;
+            background: rgba(212, 163, 115, 0.12) !important;
+        }
+        footer .brand-link .brand-icon-wrapper i {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-logo {
+            color: #e8ddd8 !important;
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        footer .brand-link .brand-logo span {
+            color: #d4a373 !important;
+        }
+        footer .footer-bottom .text-accent {
+            color: #d4a373 !important;
+        }
+        footer .back-top-link {
+            color: #7a6a60 !important;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.3s;
+        }
+        footer .back-top-link:hover {
+            color: #d4a373 !important;
+        }
+        footer ul li i.fa-chevron-right {
+            color: #d4a373 !important;
+            font-size: 8px;
+        }
+        footer ul li a:hover {
+            padding-left: 12px !important;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes float-delayed {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes subtleZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.06);
+            }
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float-delayed 4s ease-in-out 2s infinite;
+        }
+        .animate-zoom {
+            animation: subtleZoom 20s infinite alternate ease-in-out;
+        }
+        .trust-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+       
+        }
+        .hero-badge-about {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hero-badge-about:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .navbar {
+                padding: 0 16px;
+                height: 64px;
+            }
+            .navbar.scrolled {
+                height: 58px;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .brand-logo {
+                font-size: 1.3rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.3rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                font-size: 1.1rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.1rem !important;
+            }
+            footer .brand-link .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            footer .brand-link .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .ml-auto {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        [dir="rtl"] .mr-auto {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-dark);
+        }
+
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        .price-tag {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        .staff-img {
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        /* ============================================================ */
+        /* SECTION 1: OUR LEGACY – TIMELINE STORY                      */
+        /* ============================================================ */
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 2.6rem;
+            top: 3.2rem;
+            bottom: -1.25rem;
+            width: 2px;
+            background: var(--border-color);
+            opacity: 0.4;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-item:hover {
+            transform: translateX(6px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 30px rgba(139, 102, 80, 0.10);
+        }
+        .timeline-year {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(139, 102, 80, 0.25);
+        }
+        .timeline-item .content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-main);
+        }
+        .timeline-item .content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============================================================ */
+        /* SECTION 2: THE DIFFERENCE – UNIQUE SELLING POINTS            */
+        /* ============================================================ */
+        .diff-card {
+            background: var(--bg-card);
+            padding: 2rem 1.75rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-color), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .diff-card:hover::before {
+            opacity: 0.04;
+        }
+        .diff-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(139, 102, 80, 0.12);
+        }
+        .diff-card .icon-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 2px solid var(--border-light);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .diff-card:hover .icon-ring {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .diff-card:hover .icon-ring i {
+            color: #fff;
+        }
+        .diff-card .icon-ring i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            transition: color 0.4s ease;
+        }
+        .diff-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            position: relative;
+            z-index: 1;
+        }
+        .diff-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================ */
+        /* SECTION 3: MASTER BARBERS – TEAM SHOWCASE                    */
+        /* ============================================================ */
+        .barber-team-card {
+            background: var(--bg-card);
+            border-radius: 1.25rem;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .barber-team-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(139, 102, 80, 0.12);
+        }
+        .barber-team-card .avatar {
+            height: 220px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .barber-team-card .avatar .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+        .barber-team-card .info {
+            padding: 1.5rem 1.5rem 1.75rem;
+            text-align: center;
+        }
+        .barber-team-card .info h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+        .barber-team-card .info .role {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .barber-team-card .info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 0.4rem;
+        }
+        .barber-team-card .info .social-links {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.75rem;
+        }
+        .barber-team-card .info .social-links a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+        }
+        .barber-team-card .info .social-links a:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================ */
+        /* SECTION 4: VALUES & PHILOSOPHY – PILL CARDS                  */
+        /* ============================================================ */
+        .philosophy-card {
+            background: var(--bg-card);
+            padding: 2rem 1.75rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .philosophy-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: width 0.4s ease;
+            border-radius: 4px;
+        }
+        .philosophy-card:hover::after {
+            width: 60%;
+        }
+        .philosophy-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(139, 102, 80, 0.10);
+        }
+        .philosophy-card .emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        .philosophy-card h4 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+        .philosophy-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================ */
+        /* SECTION 5: COMMUNITY & IMPACT – TESTIMONIALS + STATS         */
+        /* ============================================================ */
+        .impact-stat {
+            background: var(--bg-card);
+            padding: 1.75rem 1.5rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .impact-stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(139, 102, 80, 0.10);
+        }
+        .impact-stat .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+        .impact-stat .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.3rem;
+        }
+
+        .testimonial-mini {
+            background: var(--bg-card);
+            padding: 1.75rem 2rem;
+            border-radius: 1.25rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .testimonial-mini::before {
+            content: '\201C';
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 0.5rem;
+            left: 1.25rem;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-mini:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(139, 102, 80, 0.10);
+        }
+        .testimonial-mini p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-style: italic;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+        .testimonial-mini .attribution {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .testimonial-mini .attribution .initials {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+        .testimonial-mini .attribution .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+        .testimonial-mini .attribution .detail {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR – EXACT COPY                                         -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper"><i class="fas fa-cut"></i></div>
+                <div class="brand-logo" style="color: var(--text-main) !important;"><span>Blade</span>&nbsp;Beard</div>
+            </a>
+            <div class="hidden xl:flex justify-center items-center flex-1 gap-1">
+                <div class="dropdown">
+                    <div class="nav-link">Home <i class="fas fa-chevron-down text-[8px] ml-1 opacity-50"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="barbers.html" class="nav-link">Barbers</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                 <a href="groom.html" class="nav-link">Groom</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">SignUp</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER – WITH ACTIVE LINK SUPPORT                     -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper"><i class="fas fa-cut"></i></div>
+                <div class="brand-logo" style="color: var(--text-main) !important;"><span>Blade</span>&nbsp;Beard</div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <!-- HOME DROPDOWN -->
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle"><span>Home</span><i class="fas fa-chevron-down"></i></div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="index">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="home-2">Home 2</a>
+                </div>
+            </div>
+            <!-- Regular links with data-page attributes -->
+            <a href="about.html" class="mobile-link" onclick="closeMenu()" data-page="about">About</a>
+            <a href="services.html" class="mobile-link" onclick="closeMenu()" data-page="services">Services</a>
+            <a href="barbers.html" class="mobile-link" onclick="closeMenu()" data-page="barbers">Barbers</a>
+            <a href="gallery.html" class="mobile-link" onclick="closeMenu()" data-page="gallery">Gallery</a>
+           <a href="groom.html" class="mobile-link" onclick="closeMenu()" data-page="groom">Groom</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()" data-page="contact">Contact</a>
+        </div>
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <!-- Login & Sign Up Buttons -->
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()" data-page="login"><i class="fas fa-sign-in-alt mr-2"></i> Login</a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()" data-page="signup"><i class="fas fa-user-plus mr-2"></i> Sign Up</a>
+            </div>
+            <!-- Theme & Direction -->
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme"><i class="fas fa-moon" id="theme-icon-mobile"></i></button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR"><span class="rtl-text">LTR</span> <i class="fas fa-arrow-right-arrow-left"></i></button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()"><i class="fas fa-phone-alt mr-2" style="transform: scaleX(-1); display: inline-block;"></i> Call for Appointment</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HERO BANNER – ABOUT PAGE                                     -->
+    <!-- ============================================================ -->
+    <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-[var(--border-light)]">
+        <div class="absolute inset-0 z-0">
+            <img src="img/hero1.webp" alt="Barbershop interior" class="w-full h-full object-cover scale-110 animate-zoom">
+            <div class="absolute inset-0 hero-overlay-about"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0f0a08]/85 via-[#0f0a08]/50 to-[#0f0a08]/75"></div>
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.3&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 hero-badge-about px-5 py-2.5 rounded-full mb-6 hover:bg-white/15 transition-all duration-300">
+                <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a373] opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-[#d4a373]"></span></span>
+                <span class="text-white text-xs font-bold uppercase tracking-[0.2em]"><i class="fas fa-info-circle mr-2"></i> Our Story</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white mb-5 drop-shadow-lg">Crafting <br><span class="text-[#d4a373] drop-shadow-md relative">Confidence</span></h1>
+            <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">Since 2012, Blade & Beard has been the go-to destination for men who value precision, style, and a classic barbering experience. We're not just about haircuts — we're about building confidence, one chair at a time.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
+                <a href="#services" class="group w-full sm:w-auto px-8 py-3.5 sm:px-10 sm:py-4 bg-[#d4a373] text-[#0f0a08] rounded-full font-semibold text-base sm:text-lg hover:scale-105 transition duration-300 shadow-lg shadow-[#d4a373]/30 hover:shadow-[#d4a373]/50 block relative overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center"><i class="fas fa-scissors mr-2"></i> Our Services <i class="fas fa-arrow-right ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1"></i></span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-[#d4a373] to-[#b4835a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                </a>
+                <a href="#contact" class="group w-full sm:w-auto px-8 py-3.5 sm:px-10 sm:py-4 border-2 border-white text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0f0a08] transition duration-300 shadow-lg block relative overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center"><i class="fas fa-calendar-check mr-2"></i> Book a Visit <i class="fas fa-arrow-right ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1"></i></span>
+                    <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+                </a>
+            </div>
+            <div class="mt-12 flex flex-wrap justify-center items-center gap-8 text-white/90">
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30"><i class="fas fa-calendar-alt text-[#d4a373] text-base"></i></div><span>Est. 2012</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30"><i class="fas fa-users text-[#d4a373] text-base"></i></div><span>10+ Master Barbers</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30"><i class="fas fa-cut text-[#d4a373] text-base"></i></div><span>50,000+ Cuts</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30"><i class="fas fa-star text-[#d4a373] text-base"></i></div><span>Award-Winning Service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- ============================================================ -->
+    <!-- SECTION 1: OUR STORY & HERITAGE                              -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-color)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="section-tag mb-4"><i class="fas fa-clock mr-2"></i> Our Heritage</span>
+                <h2 class="section-title">A Legacy of <span>Craftsmanship</span></h2>
+                <p class="section-sub mx-auto mt-4">From a single chair to a community of master barbers — our journey is defined by passion, precision, and a relentless pursuit of excellence.</p>
+            </div>
+
+            <div class="legacy-grid">
+                <!-- Timeline -->
+                <div class="space-y-4">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="content">
+                            <h4>The Beginning</h4>
+                            <p>Blade & Beard opened its doors with a single chair, a vintage mirror, and a dream to redefine men's grooming.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="content">
+                            <h4>Expansion</h4>
+                            <p>Moved to a larger space, added four new chairs, and welcomed a team of master barbers who shared our vision.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="content">
+                            <h4>Community Hub</h4>
+                            <p>Launched our mentorship program, giving back to the community and training the next generation of barbers.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="content">
+                            <h4>Today & Beyond</h4>
+                            <p>Proudly serving thousands of clients annually, with a reputation for excellence that spans the city.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative rounded-2xl overflow-hidden border border-[var(--border-light)] shadow-xl h-[420px]">
+                    <img src="img/ind3.jpg" alt="Vintage barbershop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0f0a08]/70 to-transparent flex items-end p-8">
+                        <div class="text-white">
+                            <span class="text-xs font-bold uppercase tracking-widest opacity-80"><i class="fas fa-quote-left mr-1"></i> Since 2012</span>
+                            <p class="text-lg font-semibold mt-1 max-w-sm">"Where every cut tells a story."</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-[#d4a373] text-[#0f0a08] text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
+                        <i class="fas fa-star mr-1"></i> 14 Years
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: MISSION & VISION                                 -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="section-tag mb-4"><i class="fas fa-bullseye mr-2"></i> Our Purpose</span>
+                <h2 class="section-title">Mission &amp; <span>Vision</span></h2>
+                <p class="section-sub mx-auto mt-4">Guided by a clear purpose and a bold vision for the future of men's grooming.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Mission Card -->
+                <div class="mv-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-2xl text-[var(--accent-color)] mb-5">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--text-main)]">Our Mission</h3>
+                        <p class="text-[var(--text-muted)] text-base leading-relaxed mt-3">To deliver an exceptional grooming experience that combines timeless barbering techniques with modern precision — empowering every client to look and feel their best.</p>
+                        <ul class="mt-5 space-y-2">
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Master craftsmanship in every service</li>
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Uncompromising quality and hygiene</li>
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Personalized attention to every client</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="mv-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-2xl text-[var(--accent-color)] mb-5">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--text-main)]">Our Vision</h3>
+                        <p class="text-[var(--text-muted)] text-base leading-relaxed mt-3">To be the premier destination for men's grooming — a place where tradition meets innovation, and every client leaves with confidence, style, and a sense of community.</p>
+                        <ul class="mt-5 space-y-2">
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Expand our community of master barbers</li>
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Launch a barber training academy</li>
+                            <li class="flex items-center gap-3 text-[var(--text-muted)] text-sm"><i class="fas fa-check-circle text-[var(--accent-color)]"></i> Create a nationwide grooming standard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: THE BLADE & BEARD DIFFERENCE                     -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-color)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="section-tag mb-4"><i class="fas fa-gem mr-2"></i> The Difference</span>
+                <h2 class="section-title">What Sets <span>Us Apart</span></h2>
+                <p class="section-sub mx-auto mt-4">We don't just cut hair — we craft experiences. Here's what makes the Blade & Beard standard different.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="diff-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="icon-ring w-20 h-20 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-3xl text-[var(--accent-color)] border-2 border-[var(--border-light)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white">
+                            <i class="fas fa-hand-sparkles"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Artisan Craft</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Every cut is a masterpiece. Our barbers treat each head of hair with the precision of a sculptor.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="diff-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="icon-ring w-20 h-20 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-3xl text-[var(--accent-color)] border-2 border-[var(--border-light)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Premium Products</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">We use only the finest grooming products — from organic oils to cruelty-free pomades.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="diff-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="icon-ring w-20 h-20 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-3xl text-[var(--accent-color)] border-2 border-[var(--border-light)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Client First</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Your vision, your comfort, your style. We listen, advise, and execute with your satisfaction in mind.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="diff-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="icon-ring w-20 h-20 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-3xl text-[var(--accent-color)] border-2 border-[var(--border-light)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Clean & Safe</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Sterilized tools, spotless stations, and a commitment to hygiene that exceeds industry standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-4 text-center">
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>Over 12,000 happy clients</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>Rated 4.9/5 on Google</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>Walk-ins always welcome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: MEET THE MASTERS                                 -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="section-tag mb-4"><i class="fas fa-users mr-2"></i> The Team</span>
+                <h2 class="section-title">Meet the <span>Masters</span></h2>
+                <p class="section-sub mx-auto mt-4">Each of our barbers is a master of their craft — bringing years of experience, a unique style, and a shared passion for excellence.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Master 1 -->
+                <div class="barber-team-card bg-[var(--bg-card)] rounded-2xl border border-[var(--border-light)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)]">
+                    <div class="master-img h-64 overflow-hidden relative">
+                        <img src="img/team1.webp" alt="James Donovan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 right-3 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Master</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">James Donovan</h4>
+                        <p class="text-sm text-[var(--accent-color)] font-semibold uppercase tracking-wider">Master Barber · 14 yrs</p>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Classic cuts, beard sculpting, and hot-towel shaves. James is the heart and soul of our shop.</p>
+                        <div class="flex flex-wrap justify-center gap-1.5 mt-3">
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Classic</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Beard</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Shaves</span>
+                        </div>
+                        <div class="flex justify-center gap-2 mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master 2 -->
+                <div class="barber-team-card bg-[var(--bg-card)] rounded-2xl border border-[var(--border-light)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)]">
+                    <div class="master-img h-64 overflow-hidden relative">
+                        <img src="img/team2.webp" alt="Marcus Reeves" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 right-3 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Senior</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Marcus Reeves</h4>
+                        <p class="text-sm text-[var(--accent-color)] font-semibold uppercase tracking-wider">Senior Barber · 10 yrs</p>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Fades, modern styles, and precision detailing. Marcus keeps you looking fresh and current.</p>
+                        <div class="flex flex-wrap justify-center gap-1.5 mt-3">
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Fades</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Modern</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Detail</span>
+                        </div>
+                        <div class="flex justify-center gap-2 mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-twitter text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master 3 -->
+                <div class="barber-team-card bg-[var(--bg-card)] rounded-2xl border border-[var(--border-light)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)]">
+                    <div class="master-img h-64 overflow-hidden relative">
+                        <img src="img/team3.webp" alt="Elena Vasquez" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 right-3 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Style</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Elena Vasquez</h4>
+                        <p class="text-sm text-[var(--accent-color)] font-semibold uppercase tracking-wider">Style Director · 8 yrs</p>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Color specialist, texture expert, and master of the modern gentleman's cut.</p>
+                        <div class="flex flex-wrap justify-center gap-1.5 mt-3">
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Color</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Texture</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Modern</span>
+                        </div>
+                        <div class="flex justify-center gap-2 mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-pinterest-p text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master 4 -->
+                <div class="barber-team-card bg-[var(--bg-card)] rounded-2xl border border-[var(--border-light)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)]">
+                    <div class="master-img h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80" alt="David Kim" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 right-3 bg-[var(--accent-color)] text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Pro</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">David Kim</h4>
+                        <p class="text-sm text-[var(--accent-color)] font-semibold uppercase tracking-wider">Barber · 6 yrs</p>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Sharp fades, clean lines, and a keen eye for detail. David brings energy to every chair.</p>
+                        <div class="flex flex-wrap justify-center gap-1.5 mt-3">
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Detail</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Fade</span>
+                            <span class="text-[10px] px-3 py-1 rounded-full bg-[var(--accent-light)] text-[var(--accent-color)] font-medium border border-[var(--border-light)]">Sharp</span>
+                        </div>
+                        <div class="flex justify-center gap-2 mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all"><i class="fab fa-tiktok text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="barbers.html" class="btn btn-solid !px-10 !py-3.5 text-sm group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center">Meet All Barbers <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i></span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-dark)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: VALUES & PHILOSOPHY                              -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-color)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="section-tag mb-4"><i class="fas fa-compass mr-2"></i> Our Philosophy</span>
+                <h2 class="section-title">The Values That <span>Guide Us</span></h2>
+                <p class="section-sub mx-auto mt-4">Every cut, every conversation, every experience is shaped by the principles we live by.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Value 1 -->
+                <div class="value-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-2xl text-[var(--accent-color)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Mastery</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">We pursue excellence in every cut, shave, and shape — constantly refining our skills and techniques.</p>
+                        <div class="w-12 h-1 bg-[var(--accent-color)] mx-auto mt-4 rounded transition-all duration-400 group-hover:w-20"></div>
+                    </div>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="value-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-2xl text-[var(--accent-color)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Integrity</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">Honest advice, transparent pricing, and a commitment to doing what's right for every client.</p>
+                        <div class="w-12 h-1 bg-[var(--accent-color)] mx-auto mt-4 rounded transition-all duration-400 group-hover:w-20"></div>
+                    </div>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="value-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-2xl text-[var(--accent-color)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Community</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">We build lasting relationships with our clients and give back to the neighborhood that supports us.</p>
+                        <div class="w-12 h-1 bg-[var(--accent-color)] mx-auto mt-4 rounded transition-all duration-400 group-hover:w-20"></div>
+                    </div>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="value-card bg-[var(--bg-card)] p-8 rounded-2xl border border-[var(--border-light)] text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-color)]/0 to-[var(--accent-color)]/0 group-hover:from-[var(--accent-color)]/5 group-hover:to-transparent transition-all duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4 text-2xl text-[var(--accent-color)] transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-[var(--text-main)]">Innovation</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-2 leading-relaxed">We embrace new techniques, trends, and technologies while honoring the timeless traditions of barbering.</p>
+                        <div class="w-12 h-1 bg-[var(--accent-color)] mx-auto mt-4 rounded transition-all duration-400 group-hover:w-20"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-4 text-center">
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>100% Satisfaction Guarantee</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>Premium Products Only</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-[var(--text-muted)] bg-[var(--bg-card)] px-5 py-2.5 rounded-full border border-[var(--border-light)] shadow-sm">
+                    <i class="fas fa-check-circle text-[var(--accent-color)]"></i>
+                    <span>Walk-Ins Welcome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================================================ -->
+    <!-- FOOTER – EXACT COPY                                         -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper"><i class="fas fa-cut"></i></div>
+                        <div class="brand-logo" style="color: #e8ddd8 !important; font-size: 1.6rem; font-weight: 700 !important; letter-spacing: -0.5px;">
+                            <span style="color: #d4a373 !important;">Blade</span><span style="color: #e8ddd8 !important;">&nbsp;Beard</span>
+                        </div>
+                    </a>
+                    <p class="text-[#b0a098] text-sm leading-relaxed mt-4">Premium men's grooming since 2012. We combine classic barbering techniques with modern style.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Home</a></li>
+                        <li><a href="about.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> About</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Services</a></li>
+                        <li><a href="barbers.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Barbers</a></li>
+                        <li><a href="gallery.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Gallery</a></li>
+                        <li><a href="walkin.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Groom</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Our Services</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Signature Haircut</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Beard Trim & Shape</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hot Towel Head Shave</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hair Coloring</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Scalp Treatment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Visit Us</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-[#d4a373] mt-0.5"></i><span class="text-[#b0a098]">123 Main Street, Suite 2B, New York, NY 10001</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-phone text-[#d4a373] mt-0.5"></i><span class="text-[#b0a098]"><a href="tel:+15552345678" class="hover:text-[#d4a373]">+1 (555) 234-5678</a></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-envelope text-[#d4a373] mt-0.5"></i><span class="text-[#b0a098]"><a href="mailto:hello@bladeandbeard.com" class="hover:text-[#d4a373]">hello@bladeandbeard.com</a></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-clock text-[#d4a373] mt-0.5"></i><span class="text-[#b0a098]">Mon–Sat: 9:00 AM – 8:00 PM · Sun: 10:00 AM – 6:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#7a6a60]">&copy; 2026 <span class="text-[#d4a373] font-semibold">Blade & Beard</span> Barbershop. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Terms of Service</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Cancellation Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Gift Cards</a>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#about" class="back-top-link inline-flex items-center gap-2 text-[#7a6a60] text-xs font-semibold uppercase tracking-widest hover:text-[#d4a373] transition-colors">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT – EXACT COPY                                     -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // ===== MOBILE DRAWER =====
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenuBtn.onclick = closeMenu;
+        drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // ===== THEME TOGGLE =====
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('barber-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme ? savedTheme === 'dark' : systemDark;
+
+        function setTheme(dark) {
+            if (dark) {
+                document.body.classList.add('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('barber-theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('barber-theme', 'light');
+            }
+        }
+
+        setTheme(isDark);
+
+        function toggleTheme() {
+            const currentlyDark = document.body.classList.contains('dark-mode');
+            setTheme(!currentlyDark);
+        }
+
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // ===== RTL TOGGLE =====
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR <i class="fas fa-arrow-right-arrow-left"></i>';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL <i class="fas fa-arrow-right-arrow-left"></i>';
+            }
+        }
+
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // ===== MOBILE DROPDOWN TOGGLE =====
+        (function() {
+            const homeToggle = document.getElementById('mobile-home-toggle');
+            const homeItems = document.getElementById('mobile-home-items');
+
+            if (homeToggle && homeItems) {
+                homeToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('open');
+                    homeItems.classList.toggle('open');
+                });
+            }
+        })();
+
+        // ===== MOBILE DRAWER ACTIVE LINK =====
+        (function() {
+            // Get current page filename
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageName = currentPage.replace('.html', '');
+
+            // Get all mobile links
+            const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-dropdown-link');
+
+            // Remove any existing active classes first
+            mobileLinks.forEach(link => link.classList.remove('active'));
+
+            // Find and highlight the matching link
+            let foundActive = false;
+            mobileLinks.forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage && linkPage === pageName) {
+                    link.classList.add('active');
+                    foundActive = true;
+                }
+                // Also match by href for fallback
+                if (!foundActive) {
+                    const href = link.getAttribute('href');
+                    if (href && href === currentPage) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                    if (href && href === '#' + pageName) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                }
+            });
+
+            // If no exact match, try to match the home page
+            if (!foundActive && (pageName === '' || pageName === 'index')) {
+                const homeLinks = document.querySelectorAll('.mobile-link[data-page="index"], .mobile-dropdown-link[data-page="index"]');
+                homeLinks.forEach(link => link.classList.add('active'));
+                // Also open the home dropdown
+                const homeItems = document.getElementById('mobile-home-items');
+                const homeToggle = document.getElementById('mobile-home-toggle');
+                if (homeItems && homeToggle) {
+                    homeItems.classList.add('open');
+                    homeToggle.classList.add('open');
+                }
+            }
+
+            // For hash-based navigation (#services, #barbers, etc.)
+            if (window.location.hash) {
+                const hash = window.location.hash.replace('#', '');
+                const hashLinks = document.querySelectorAll(`.mobile-link[data-page="${hash}"]`);
+                hashLinks.forEach(link => link.classList.add('active'));
+                // Open parent dropdown if inside one
+                hashLinks.forEach(link => {
+                    const parentItems = link.closest('.mobile-dropdown-items');
+                    if (parentItems) {
+                        parentItems.classList.add('open');
+                        const header = parentItems.previousElementSibling;
+                        if (header && header.classList.contains('mobile-dropdown-header')) {
+                            header.classList.add('open');
+                        }
+                    }
+                });
+            }
+
+            // Ensure dropdown stays open if a child is active
+            document.querySelectorAll('.mobile-dropdown-items.open').forEach(items => {
+                const header = items.previousElementSibling;
+                if (header && header.classList.contains('mobile-dropdown-header')) {
+                    header.classList.add('open');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blade & Beard · Contact Us</title>
+    <link rel="icon" type="image/jpeg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d2d2d' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='%23d4a373' font-family='Arial'%3E✂%3C/text%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Poppins"', 'sans-serif'],
+                    },
+                    colors: {
+                        barber: {
+                            50: '#f5f0eb',
+                            100: '#e5dcd3',
+                            200: '#d4c4b8',
+                            300: '#c4ac9c',
+                            400: '#b39480',
+                            500: '#a37c64',
+                            600: '#8b6650',
+                            700: '#73503c',
+                            800: '#5b3d2e',
+                            900: '#432a20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f6f3;
+            color: #1a1a1a;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            padding-top: 60px;
+            overflow-x: hidden;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #f8f6f3;
+            --bg-secondary: #f0ebe6;
+            --bg-card: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #4a3f3a;
+            --text-dim: #7a6f6a;
+            --accent-color: #8b6650;
+            --accent-dark: #5b3d2e;
+            --accent-light: #f0ebe6;
+            --border-color: #d4c4b8;
+            --border-light: rgba(139, 102, 80, 0.15);
+            --nav-bg: rgba(255, 255, 255, 0.92);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(139, 102, 80, 0.08);
+            --shadow-color: rgba(139, 102, 80, 0.08);
+        }
+
+        body.dark-mode {
+            --bg-color: #0f0a08;
+            --bg-secondary: #1a1210;
+            --bg-card: #241c18;
+            --text-main: #e8ddd8;
+            --text-muted: #b0a098;
+            --text-dim: #7a6a60;
+            --accent-color: #d4a373;
+            --accent-dark: #b4835a;
+            --accent-light: #2a1e18;
+            --border-color: #3a2a22;
+            --border-light: rgba(212, 163, 115, 0.15);
+            --nav-bg: rgba(15, 10, 8, 0.92);
+            --drawer-bg: rgba(15, 10, 8, 0.98);
+            --menu-hover-bg: rgba(212, 163, 115, 0.10);
+            --shadow-color: rgba(212, 163, 115, 0.06);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, .brand-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700 !important;
+            letter-spacing: -0.01em;
+        }
+        h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600 !important;
+            letter-spacing: -0.01em;
+        }
+        p {
+            font-weight: 400 !important;
+            line-height: 1.7;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 52px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            margin: 0 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== DROPDOWN ===== */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 58px;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        .navbar.scrolled .dropdown-menu {
+            top: 52px;
+        }
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            min-width: 200px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+        body.light-mode .dropdown-inner {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 22px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            text-align: left;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        .dropdown-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-color);
+            padding-left: 28px;
+        }
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 22px;
+            padding-right: 28px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+            border-radius: 8px;
+            gap: 8px;
+        }
+        .btn-solid {
+            background: var(--accent-color);
+            color: #FFFFFF !important;
+        }
+        .btn-solid:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 102, 80, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-link:hover {
+            color: var(--accent-color);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+
+        .mobile-link.active,
+        .mobile-dropdown-link.active {
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg) !important;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 33px !important;
+        }
+        [dir="rtl"] .mobile-link.active,
+        [dir="rtl"] .mobile-dropdown-link.active {
+            border-left: none;
+            border-right: 3px solid var(--accent-color);
+            padding-left: 28px !important;
+            padding-right: 33px !important;
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+        .mobile-dropdown-header:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            padding-left: 16px;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 500 !important;
+            color: var(--text-muted) !important;
+        }
+        .mobile-dropdown-link:hover {
+            color: var(--accent-color) !important;
+            padding-left: 36px !important;
+            background: var(--menu-hover-bg) !important;
+        }
+        [dir="rtl"] .mobile-dropdown-link:hover {
+            padding-left: 28px !important;
+            padding-right: 36px !important;
+        }
+
+        /* ===== BRAND ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .brand-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(139, 102, 80, 0.3);
+            background: rgba(139, 102, 80, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .brand-icon-wrapper:hover {
+            background: rgba(139, 102, 80, 0.25);
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        .brand-logo span {
+            color: var(--accent-color);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 1px solid var(--border-light);
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.15;
+        }
+        .section-title span {
+            color: var(--accent-color);
+        }
+        .section-sub {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FOOTER — ALWAYS DARK ===== */
+        footer {
+            background: #0f0a08 !important;
+            border-top: 1px solid #2a1e18 !important;
+            padding-top: 60px;
+            color: #e8ddd8 !important;
+        }
+        footer h4 {
+            color: #e8ddd8 !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        footer a,
+        footer li,
+        footer span:not(.brand-logo span) {
+            color: #b0a098 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: #d4a373 !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #2a1e18 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #b0a098 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: #d4a373 !important;
+            border-color: #d4a373 !important;
+            color: #0f0a08 !important;
+            transform: translateY(-3px);
+        }
+        footer .footer-bottom {
+            border-top: 1px solid #2a1e18 !important;
+            padding: 24px 0;
+            margin-top: 40px;
+        }
+        footer .footer-bottom p {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a:hover {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-icon-wrapper {
+            border-color: rgba(212, 163, 115, 0.3) !important;
+            background: rgba(212, 163, 115, 0.12) !important;
+        }
+        footer .brand-link .brand-icon-wrapper i {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-logo {
+            color: #e8ddd8 !important;
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        footer .brand-link .brand-logo span {
+            color: #d4a373 !important;
+        }
+        footer .footer-bottom .text-accent {
+            color: #d4a373 !important;
+        }
+        footer .back-top-link {
+            color: #7a6a60 !important;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.3s;
+        }
+        footer .back-top-link:hover {
+            color: #d4a373 !important;
+        }
+        footer ul li i.fa-chevron-right {
+            color: #d4a373 !important;
+            font-size: 8px;
+        }
+        footer ul li a:hover {
+            padding-left: 12px !important;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes float-delayed {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes subtleZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.06);
+            }
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float-delayed 4s ease-in-out 2s infinite;
+        }
+        .animate-zoom {
+            animation: subtleZoom 20s infinite alternate ease-in-out;
+        }
+
+        /* ===== HERO OVERLAY ===== */
+        .hero-overlay-contact {
+            background: linear-gradient(135deg, rgba(15, 10, 8, 0.80) 0%, rgba(139, 102, 80, 0.40) 100%);
+        }
+        .hero-badge-contact {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hero-badge-contact:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .navbar {
+                padding: 0 16px;
+                height: 64px;
+            }
+            .navbar.scrolled {
+                height: 58px;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .brand-logo {
+                font-size: 1.3rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.3rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                font-size: 1.1rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.1rem !important;
+            }
+            footer .brand-link .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            footer .brand-link .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .ml-auto {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        [dir="rtl"] .mr-auto {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-dark);
+        }
+
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-question {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .faq-question:hover {
+            background: var(--menu-hover-bg);
+        }
+        .faq-question .fa-chevron-down {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.open .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .faq-answer.open {
+            max-height: 200px;
+            padding-top: 6px;
+        }
+
+        /* ================================================================ */
+        /* TRUST BADGE CARD                                                */
+        /* ================================================================ */
+        .trust-badge-card {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .trust-badge-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px var(--shadow-color);
+        }
+        .trust-badge-card .icon-wrap {
+            transition: all 0.4s ease;
+        }
+        .trust-badge-card:hover .icon-wrap {
+            background: var(--accent-color);
+            color: #fff;
+            transform: scale(1.1) rotate(4deg);
+        }
+
+        /* ================================================================ */
+        /* LOCATION CARD                                                   */
+        /* ================================================================ */
+        .location-card {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .location-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow-color);
+        }
+
+        /* ================================================================ */
+        /* BOOKING CARD                                                    */
+        /* ================================================================ */
+        .booking-card .icon-circle {
+            transition: all 0.4s ease;
+        }
+        .booking-card:hover .icon-circle {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 8px var(--border-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR                                                       -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper"><i class="fas fa-cut"></i></div>
+                <div class="brand-logo" style="color: var(--text-main) !important;"><span>Blade</span>&nbsp;Beard</div>
+            </a>
+            <div class="hidden xl:flex justify-center items-center flex-1 gap-1">
+                <div class="dropdown">
+                    <div class="nav-link">Home <i class="fas fa-chevron-down text-[8px] ml-1 opacity-50"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="barbers.html" class="nav-link">Barbers</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="groom.html" class="nav-link">Groom</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">SignUp</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn"><i class="fas fa-moon" id="theme-icon-desktop"></i></button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper"><i class="fas fa-cut"></i></div>
+                <div class="brand-logo" style="color: var(--text-main) !important;"><span>Blade</span>&nbsp;Beard</div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle"><span>Home</span><i class="fas fa-chevron-down"></i></div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="index">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="home-2">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()" data-page="about">About</a>
+            <a href="services.html" class="mobile-link" onclick="closeMenu()" data-page="services">Services</a>
+            <a href="barbers.html" class="mobile-link" onclick="closeMenu()" data-page="barbers">Barbers</a>
+            <a href="gallery.html" class="mobile-link" onclick="closeMenu()" data-page="gallery">Gallery</a>
+           <a href="groom.html" class="mobile-link" onclick="closeMenu()" data-page="groom">Groom</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()" data-page="contact">Contact</a>
+        </div>
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()" data-page="login"><i class="fas fa-sign-in-alt mr-2"></i> Login</a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()" data-page="signup"><i class="fas fa-user-plus mr-2"></i> Sign Up</a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn"><i class="fas fa-moon" id="theme-icon-mobile"></i></button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle"><span class="rtl-text">LTR</span> <i class="fas fa-arrow-right-arrow-left"></i></button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()"><i class="fas fa-phone-alt mr-2" style="transform: scaleX(-1); display: inline-block;"></i> Call for Appointment</a>
+        </div>
+    </div>
+
+   ```html
+<!-- ============================================================ -->
+<!-- FULL VIEWPORT HERO BANNER – CONTACT PAGE                    -->
+<!-- ============================================================ -->
+<section
+    class="relative w-full h-screen min-h-[700px] -mt-[72px] flex items-center justify-center overflow-hidden border-b border-[var(--border-light)]">
+
+    <!-- ======================================================== -->
+    <!-- FULL SCREEN BACKGROUND IMAGE                             -->
+    <!-- ======================================================== -->
+    <div class="absolute inset-0 z-0">
+
+        <img
+            src="img/hero3.webp"
+            alt="Barbershop interior"
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+        >
+
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-[#0f0a08]/55"></div>
+
+        <!-- Top to bottom gradient -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0f0a08]/80 via-transparent to-[#0f0a08]/85"></div>
+
+        <!-- Subtle texture -->
+        <div
+            class="absolute inset-0 opacity-[0.08]"
+            style="background-image:url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.3&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- HERO CONTENT                                              -->
+    <!-- ======================================================== -->
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 text-center">
+
+        <!-- Badge -->
+        <div
+            class="inline-flex items-center gap-3 bg-[#0f0a08]/60 border border-[#d4a373]/40 backdrop-blur-md px-5 py-2.5 rounded-full mb-6">
+
+            <span class="relative flex h-3 w-3">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a373] opacity-75">
+                </span>
+
+                <span
+                    class="relative inline-flex rounded-full h-3 w-3 bg-[#d4a373]">
+                </span>
+            </span>
+
+            <span class="text-white text-xs font-bold uppercase tracking-[0.2em]">
+                <i class="fas fa-phone mr-2 text-[#d4a373]"></i>
+                Get in Touch
+            </span>
+
+        </div>
+
+
+        <!-- Main Heading -->
+        <h1
+            class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] text-white mb-6 drop-shadow-2xl">
+
+            Let's
+            <br>
+
+            <span class="text-[#d4a373]">
+                Connect
+            </span>
+
+        </h1>
+
+
+        <!-- Description -->
+        <p
+            class="text-white/85 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+
+            Have a question, want to book an appointment, or just want to say hello?
+            Reach out to us — we'd love to hear from you.
+
+        </p>
+
+
+        <!-- ==================================================== -->
+        <!-- BUTTONS                                               -->
+        <!-- ==================================================== -->
+        <div
+            class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
+
+            <!-- Send Message -->
+            <a
+                href="#contact-form"
+                class="group w-full sm:w-auto px-8 py-4 bg-[#d4a373] text-[#0f0a08] rounded-full font-semibold text-base sm:text-lg hover:scale-105 transition-all duration-300 shadow-xl shadow-[#d4a373]/30">
+
+                <span class="flex items-center justify-center">
+
+                    <i class="fas fa-paper-plane mr-2"></i>
+
+                    Send a Message
+
+                    <i
+                        class="fas fa-arrow-right ml-2 text-sm group-hover:translate-x-1 transition-transform">
+                    </i>
+
+                </span>
+
+            </a>
+
+
+            <!-- Call Button -->
+            <a
+                href="tel:+15552345678"
+                class="group w-full sm:w-auto px-8 py-4 border-2 border-white/80 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0f0a08] transition-all duration-300 backdrop-blur-sm">
+
+                <span class="flex items-center justify-center">
+
+                    <i class="fas fa-phone-alt mr-2" style="transform: scaleX(-1); display: inline-block;"></i>
+
+                    Call Us Now
+
+                    <i
+                        class="fas fa-arrow-right ml-2 text-sm group-hover:translate-x-1 transition-transform">
+                    </i>
+
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- ==================================================== -->
+        <!-- TRUST POINTS                                          -->
+        <!-- ==================================================== -->
+        <div
+            class="mt-10 sm:mt-12 flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-white/90">
+
+            <!-- Trust 1 -->
+            <div class="flex items-center gap-2 text-sm">
+
+                <div
+                    class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30 backdrop-blur-sm">
+
+                    <i class="fas fa-clock text-[#d4a373]"></i>
+
+                </div>
+
+                <span>
+                    Response Within 24hrs
+                </span>
+
+            </div>
+
+
+            <!-- Trust 2 -->
+            <div class="flex items-center gap-2 text-sm">
+
+                <div
+                    class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30 backdrop-blur-sm">
+
+                    <i class="fas fa-phone text-[#d4a373]"></i>
+
+                </div>
+
+                <span>
+                    Call or Text Anytime
+                </span>
+
+            </div>
+
+
+            <!-- Trust 3 -->
+            <div class="flex items-center gap-2 text-sm">
+
+                <div
+                    class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30 backdrop-blur-sm">
+
+                    <i class="fas fa-map-pin text-[#d4a373]"></i>
+
+                </div>
+
+                <span>
+                    Visit Us in Person
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================== -->
+    <!-- SCROLL INDICATOR                                         -->
+    <!-- ======================================================== -->
+    <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-2 text-white/60">
+
+        <span class="text-[10px] uppercase tracking-[0.25em]">
+            Scroll
+        </span>
+
+        <i class="fas fa-chevron-down animate-bounce text-[#d4a373]"></i>
+
+    </div>
+
+</section>
+```
+
+    <!-- ============================================================ -->
+<!-- SECTION 1: CONTACT FORM + INFO + MAP                         -->
+<!-- ============================================================ -->
+<section id="contact-form" class="py-20 bg-[var(--bg-color)] border-b border-[var(--border-light)] relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[var(--accent-color)] opacity-[0.03]"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-[var(--accent-color)] opacity-[0.03]"></div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+        <!-- Two-column layout: Contact Info + Form -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Left: Contact Info -->
+            <div>
+                <span class="section-tag mb-4"><i class="fas fa-info-circle mr-1"></i> Reach Out</span>
+                <h2 class="section-title text-3xl lg:text-4xl">Let's <span>Connect</span></h2>
+                <p class="text-[var(--text-muted)] mt-4 mb-8 leading-relaxed">
+                    Whether you have a question about our services, want to book an appointment, or just want to know more about what we do — we're just a message away.
+                </p>
+
+                <!-- Contact Details -->
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4 group transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center flex-shrink-0 border border-[var(--border-light)] group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] text-lg group-hover:text-white transition-all duration-300"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-sm uppercase tracking-wider">Visit Us</h4>
+                            <p class="text-[var(--text-muted)] text-sm">123 Main Street, Suite 2B, New York, NY 10001</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center flex-shrink-0 border border-[var(--border-light)] group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fas fa-phone-alt text-[var(--accent-color)] text-lg group-hover:text-white transition-all duration-300"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-sm uppercase tracking-wider">Call Us</h4>
+                            <p class="text-[var(--text-muted)] text-sm"><a href="tel:+15552345678" class="hover:text-[var(--accent-color)] transition-colors">+1 (555) 234-5678</a></p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center flex-shrink-0 border border-[var(--border-light)] group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fas fa-envelope text-[var(--accent-color)] text-lg group-hover:text-white transition-all duration-300"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-sm uppercase tracking-wider">Email Us</h4>
+                            <p class="text-[var(--text-muted)] text-sm"><a href="mailto:hello@bladeandbeard.com" class="hover:text-[var(--accent-color)] transition-colors">hello@bladeandbeard.com</a></p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center flex-shrink-0 border border-[var(--border-light)] group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fas fa-clock text-[var(--accent-color)] text-lg group-hover:text-white transition-all duration-300"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-sm uppercase tracking-wider">Working Hours</h4>
+                            <p class="text-[var(--text-muted)] text-sm">Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Connect With Us -->
+                <div class="mt-10 p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm">
+                    <h4 class="text-base font-bold text-[var(--text-main)] mb-4 flex items-center gap-2">
+                        <i class="fas fa-heart text-[var(--accent-color)]"></i> Why Connect With Us?
+                    </h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2.5 text-sm text-[var(--text-muted)]">
+                            <i class="fas fa-check-circle text-[var(--accent-color)] text-xs"></i>
+                            <span>Quick Response</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-sm text-[var(--text-muted)]">
+                            <i class="fas fa-check-circle text-[var(--accent-color)] text-xs"></i>
+                            <span>Expert Advice</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-sm text-[var(--text-muted)]">
+                            <i class="fas fa-check-circle text-[var(--accent-color)] text-xs"></i>
+                            <span>Personalized Care</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-sm text-[var(--text-muted)]">
+                            <i class="fas fa-check-circle text-[var(--accent-color)] text-xs"></i>
+                            <span>100% Confidential</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-5 grid grid-cols-3 gap-3">
+                    <div class="text-center p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="text-xl font-bold text-[var(--accent-color)]">24</div>
+                        <div class="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-wider">Hr Response</div>
+                    </div>
+                    <div class="text-center p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="text-xl font-bold text-[var(--accent-color)]">4.9</div>
+                        <div class="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-wider">Avg Rating</div>
+                    </div>
+                    <div class="text-center p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="text-xl font-bold text-[var(--accent-color)]">98%</div>
+                        <div class="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-wider">Satisfaction</div>
+                    </div>
+                </div>
+
+                <!-- Social Quick Links -->
+                <div class="mt-5 flex items-center gap-4">
+                    <span class="text-xs font-semibold text-[var(--text-dim)] uppercase tracking-wider">Follow Us</span>
+                    <div class="flex gap-2">
+                        <a href="#" class="w-9 h-9 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fab fa-youtube text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-[var(--border-light)] flex items-center justify-center text-[var(--text-dim)] hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-all duration-300">
+                            <i class="fab fa-tiktok text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="bg-[var(--bg-card)] p-8 lg:p-10 rounded-3xl border border-[var(--border-light)] shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                <!-- Decorative corner accent -->
+                <div class="absolute -top-16 -right-16 w-32 h-32 rounded-full bg-[var(--accent-color)] opacity-5"></div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-2xl font-bold text-[var(--text-main)]">Send a Message</h3>
+                        <span class="text-[10px] font-medium text-[var(--accent-color)] bg-[var(--accent-light)] px-3 py-1 rounded-full border border-[var(--border-light)]">Quick Reply</span>
+                    </div>
+                    <p class="text-[var(--text-muted)] text-sm mb-6">We'll get back to you within 24 hours.</p>
+
+                    <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                        <div>
+                            <label class="block text-[var(--text-main)] text-sm font-semibold mb-1.5">Full Name <span class="text-[var(--accent-color)]">*</span></label>
+                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-[var(--border-light)] bg-[var(--bg-secondary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[var(--text-main)] text-sm font-semibold mb-1.5">Email Address <span class="text-[var(--accent-color)]">*</span></label>
+                            <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-[var(--border-light)] bg-[var(--bg-secondary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[var(--text-main)] text-sm font-semibold mb-1.5">Phone Number</label>
+                            <input type="tel" placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 rounded-xl border border-[var(--border-light)] bg-[var(--bg-secondary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[var(--text-main)] text-sm font-semibold mb-1.5">Subject</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-[var(--border-light)] bg-[var(--bg-secondary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-all appearance-none cursor-pointer">
+                                <option value="">Select a subject</option>
+                                <option value="appointment">Book an Appointment</option>
+                                <option value="question">General Question</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[var(--text-main)] text-sm font-semibold mb-1.5">Message <span class="text-[var(--accent-color)]">*</span></label>
+                            <textarea rows="4" required placeholder="Tell us how we can help..." class="w-full px-4 py-3 rounded-xl border border-[var(--border-light)] bg-[var(--bg-secondary)] text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-all resize-none"></textarea>
+                        </div>
+
+                        <!-- Form footer with trust badge -->
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                            <div class="flex items-center gap-2 text-xs text-[var(--text-dim)]">
+                                <i class="fas fa-lock text-[var(--accent-color)]"></i>
+                                <span>Your info is safe with us</span>
+                            </div>
+                            <button type="submit" class="btn btn-solid w-full sm:w-auto !px-10 !py-3.5 text-sm group relative overflow-hidden">
+                                <span class="relative z-10 flex items-center">
+                                    <i class="fas fa-paper-plane mr-2"></i> Send Message
+                                    <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </span>
+                                <span class="absolute inset-0 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-dark)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- MAP SECTION – Full Width Below Form                        -->
+        <!-- ========================================================== -->
+        <div class="mt-20">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="section-tag mb-4"><i class="fas fa-map-pin mr-1"></i> Find Us</span>
+                <h2 class="section-title">Visit Our <span>Barbershop</span></h2>
+                <p class="section-sub mx-auto mt-4">Come see us in person — our friendly barbers are always ready to welcome you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <!-- Map Container -->
+                <div class="lg:col-span-3 rounded-3xl overflow-hidden border border-[var(--border-light)] shadow-md relative bg-[var(--bg-secondary)] h-[380px] lg:h-[420px]">
+                    <!-- Google Maps Embed -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00625868459426!3d40.71312937933018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a316bb7b10b%3A0x334a73f5a9c6a8b!2s123%20Main%20St%2C%20New%20York%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1700000000000" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full h-full"
+                    ></iframe>
+                    
+                    <!-- Map Overlay Badge -->
+                    <div class="absolute bottom-4 left-4 bg-[#0f0a08]/80 backdrop-blur-sm text-white px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-3">
+                        <i class="fas fa-map-pin text-[#d4a373] text-lg"></i>
+                        <div>
+                            <p class="text-xs font-semibold">Blade &amp; Beard</p>
+                            <p class="text-[10px] text-white/60">123 Main Street, Suite 2B</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Details Card -->
+                <div class="lg:col-span-2 bg-[var(--bg-card)] p-6 lg:p-8 rounded-3xl border border-[var(--border-light)] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] mb-4 flex items-center gap-2">
+                            <i class="fas fa-location-dot text-[var(--accent-color)]"></i> 
+                            Our Location
+                        </h3>
+                        
+                        <ul class="space-y-4 text-[var(--text-muted)]">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-map-pin text-[var(--accent-color)] text-base mt-0.5 w-5"></i>
+                                <span>123 Main Street, Suite 2B, New York, NY 10001</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-subway text-[var(--accent-color)] text-base mt-0.5 w-5"></i>
+                                <span>Nearest Subway: <strong class="text-[var(--text-main)]">5 min walk</strong> from Main St Station</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-car text-[var(--accent-color)] text-base mt-0.5 w-5"></i>
+                                <span>Street parking available. Paid lot <strong class="text-[var(--text-main)]">2 blocks</strong> away.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-wheelchair text-[var(--accent-color)] text-base mt-0.5 w-5"></i>
+                                <span>Wheelchair accessible entrance and restrooms.</span>
+                            </li>
+                        </ul>
+
+                        <!-- Quick Info Tags -->
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider bg-[var(--accent-light)] text-[var(--accent-color)] px-3 py-1.5 rounded-full border border-[var(--border-light)] flex items-center gap-1.5">
+                                <i class="fas fa-wifi text-xs"></i> Free Wi-Fi
+                            </span>
+                            <span class="text-[10px] font-semibold uppercase tracking-wider bg-[var(--accent-light)] text-[var(--accent-color)] px-3 py-1.5 rounded-full border border-[var(--border-light)] flex items-center gap-1.5">
+                                <i class="fas fa-coffee text-xs"></i> Complimentary Coffee
+                            </span>
+                            <span class="text-[10px] font-semibold uppercase tracking-wider bg-[var(--accent-light)] text-[var(--accent-color)] px-3 py-1.5 rounded-full border border-[var(--border-light)] flex items-center gap-1.5">
+                                <i class="fas fa-clock text-xs"></i> Walk-Ins Welcome
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Directions Button -->
+                    <a href="https://www.google.com/maps/dir/Current+Location/123+Main+St,+New+York,+NY+10001" 
+                       target="_blank" 
+                       class="btn btn-solid w-full mt-5 !py-3.5 text-sm group relative overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center">
+                            <i class="fas fa-directions mr-2"></i> Get Directions
+                            <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-dark)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+    <!-- SECTION 2: BOOK YOUR APPOINTMENT                            -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-light)] relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-[var(--accent-color)] opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="booking-card bg-[var(--bg-card)] border border-[var(--border-light)] rounded-3xl p-10 lg:p-14 shadow-xl transition-all duration-300 hover:shadow-2xl">
+                <div class="flex flex-col lg:flex-row items-center gap-10">
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <div class="icon-circle w-40 h-40 rounded-full bg-[var(--accent-light)] flex items-center justify-center border-4 border-[var(--accent-color)] shadow-lg transition-all duration-300">
+                            <i class="fas fa-calendar-check text-6xl text-[var(--accent-color)]"></i>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/3 text-center lg:text-left">
+                        <span class="section-tag mb-4"><i class="fas fa-cut mr-1"></i> Book Now</span>
+                        <h2 class="text-3xl lg:text-4xl font-extrabold text-[var(--text-main)] mb-4">Ready for a <span class="text-[var(--accent-color)]">Fresh Look</span>?</h2>
+                        <p class="text-[var(--text-muted)] text-base leading-relaxed mb-6">Walk in or book ahead — our master barbers are ready to craft your signature style. Experience the Blade & Beard difference today.</p>
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                            <a href="#" class="btn btn-solid !px-8 !py-4 text-sm">
+                                <i class="fas fa-calendar-alt mr-2"></i> Book Online
+                            </a>
+                            <a href="walkin.html" class="btn btn-outline !px-8 !py-4 text-sm">
+                                <i class="fas fa-walking mr-2"></i> Groom
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: FREQUENTLY ASKED QUESTIONS                       -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="section-tag mb-4"><i class="fas fa-question-circle mr-1"></i> FAQ</span>
+                <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+                <p class="section-sub mx-auto mt-4">Quick answers to the most common questions about our barbershop services.</p>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="faq-question flex justify-between items-center p-6" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        <h4 class="font-bold text-[var(--text-main)] text-base">Do I need an appointment to get a haircut?</h4>
+                        <i class="fas fa-chevron-down text-[var(--text-dim)] text-sm"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-[var(--text-muted)] text-sm pb-6 leading-relaxed">No, we welcome walk-ins for all our services. However, during peak hours, wait times may be longer. You can always call ahead to check current availability.</p>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="faq-question flex justify-between items-center p-6" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        <h4 class="font-bold text-[var(--text-main)] text-base">What services do you offer?</h4>
+                        <i class="fas fa-chevron-down text-[var(--text-dim)] text-sm"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-[var(--text-muted)] text-sm pb-6 leading-relaxed">We offer a full range of men's grooming services including signature haircuts, beard trims and sculpting, hot towel head shaves, hair coloring, and scalp treatments. Check our Services page for details.</p>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="faq-question flex justify-between items-center p-6" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        <h4 class="font-bold text-[var(--text-main)] text-base">What is your cancellation policy?</h4>
+                        <i class="fas fa-chevron-down text-[var(--text-dim)] text-sm"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-[var(--text-muted)] text-sm pb-6 leading-relaxed">We kindly ask for at least 24 hours notice for cancellations or rescheduling. Late cancellations may be subject to a fee. Please call us if you need to make changes to your booking.</p>
+                    </div>
+                </div>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-light)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="faq-question flex justify-between items-center p-6" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        <h4 class="font-bold text-[var(--text-main)] text-base">Do you offer gift cards?</h4>
+                        <i class="fas fa-chevron-down text-[var(--text-dim)] text-sm"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-[var(--text-muted)] text-sm pb-6 leading-relaxed">Yes! Gift cards are available for purchase in-store or online. They make the perfect gift for any occasion. Contact us for more details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- ============================================================ -->
+<!-- SECTION 5: TRUSTED BRANDS                                    -->
+<!-- ============================================================ -->
+<section class="py-16 bg-[var(--bg-color)] border-b border-[var(--border-light)] relative overflow-hidden">
+
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-[var(--accent-color)] opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="section-tag mb-4 inline-flex items-center">
+                <i class="fas fa-award mr-2"></i> Premium Brands
+            </span>
+            <h2 class="section-title">Trusted <span>Grooming Brands</span></h2>
+            <p class="section-sub mx-auto mt-4">
+                We use professional-grade products from trusted grooming brands
+                to deliver the best results with every service.
+            </p>
+        </div>
+
+        <!-- Brand Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-5">
+
+            <!-- Brand 1 -->
+            <div class="group flex flex-col items-center justify-center text-center
+                        min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)]
+                        border border-[var(--border-light)] shadow-sm
+                        transition-all duration-300 hover:-translate-y-2
+                        hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4
+                            bg-[var(--accent-light)] border border-[var(--border-light)]
+                            text-[var(--accent-color)] text-xl
+                            transition-all duration-300 group-hover:bg-[var(--accent-color)]
+                            group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-scissors"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">American Crew</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Professional Grooming</p>
+            </div>
+
+            <!-- Brand 2 -->
+            <div class="group flex flex-col items-center justify-center text-center min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[var(--accent-light)] border border-[var(--border-light)] text-[var(--accent-color)] text-xl transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-pump-soap"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">Reuzel</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Premium Pomades</p>
+            </div>
+
+            <!-- Brand 3 -->
+            <div class="group flex flex-col items-center justify-center text-center min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[var(--accent-light)] border border-[var(--border-light)] text-[var(--accent-color)] text-xl transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-spray-can-sparkles"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">Uppercut Deluxe</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Men's Styling</p>
+            </div>
+
+            <!-- Brand 4 -->
+            <div class="group flex flex-col items-center justify-center text-center min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[var(--accent-light)] border border-[var(--border-light)] text-[var(--accent-color)] text-xl transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-droplet"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">Proraso</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Shaving Essentials</p>
+            </div>
+
+            <!-- Brand 5 -->
+            <div class="group flex flex-col items-center justify-center text-center min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[var(--accent-light)] border border-[var(--border-light)] text-[var(--accent-color)] text-xl transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">Layrite</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Hair Styling</p>
+            </div>
+
+            <!-- Brand 6 -->
+            <div class="group flex flex-col items-center justify-center text-center min-h-[175px] p-5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-light)] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent-color)] hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-[var(--accent-light)] border border-[var(--border-light)] text-[var(--accent-color)] text-xl transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:text-[var(--bg-color)]">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h4 class="text-[var(--text-main)] font-bold text-sm group-hover:text-[var(--accent-color)]">Baxter</h4>
+                <p class="text-[var(--text-muted)] text-[10px] mt-1">Premium Care</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- ============================================================ -->
+    <!-- SECTION 6: LIVE CHAT & SUPPORT                              -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-dark)] rounded-3xl p-10 lg:p-14 text-center text-white shadow-xl">
+                <div class="max-w-3xl mx-auto">
+                    <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-6 border border-white/20">
+                        <i class="fas fa-comment-dots text-white/90"></i>
+                        <span class="text-xs font-bold uppercase tracking-[0.15em]">Live Support</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Need Help Right Now?</h2>
+                    <p class="text-white/90 text-base lg:text-lg leading-relaxed mb-8">Our team is online and ready to assist you with any questions, bookings, or grooming advice. Connect with us instantly.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#" class="inline-flex items-center gap-3 bg-white text-[var(--accent-color)] hover:bg-white/90 px-8 py-4 rounded-full font-bold text-sm transition-all shadow-lg hover:scale-105">
+                            <i class="fas fa-comment"></i> Live Chat
+                        </a>
+                        <a href="tel:+15552345678" class="inline-flex items-center gap-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-[var(--accent-color)] px-8 py-4 rounded-full font-bold text-sm transition-all">
+                            <i class="fas fa-phone-alt" style="transform: scaleX(-1); display: inline-block;"></i> Call Now
+                        </a>
+                        <a href="mailto:hello@bladeandbeard.com" class="inline-flex items-center gap-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-[var(--accent-color)] px-8 py-4 rounded-full font-bold text-sm transition-all">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER – EXACT COPY                                         -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #e8ddd8 !important; font-size: 1.6rem; font-weight: 700 !important; letter-spacing: -0.5px;">
+                            <span style="color: #d4a373 !important;">Blade</span><span style="color: #e8ddd8 !important;">&nbsp;Beard</span>
+                        </div>
+                    </a>
+                    <p class="text-[#b0a098] text-sm leading-relaxed mt-4">Premium men's grooming since 2012. We combine classic barbering techniques with modern style.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Home</a></li>
+                        <li><a href="about.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> About</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Services</a></li>
+                        <li><a href="barbers.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Barbers</a></li>
+                        <li><a href="gallery.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Gallery</a></li>
+                        <li><a href="walkin.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Groom</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4>Our Services</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Signature Haircut</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Beard Trim & Shape</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hot Towel Head Shave</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hair Coloring</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Scalp Treatment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4>Visit Us</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]">123 Main Street, Suite 2B, New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]"><a href="tel:+15552345678" class="hover:text-[#d4a373]">+1 (555) 234-5678</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]"><a href="mailto:hello@bladeandbeard.com" class="hover:text-[#d4a373]">hello@bladeandbeard.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]">Mon–Sat: 9:00 AM – 8:00 PM · Sun: 10:00 AM – 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#7a6a60]">&copy; 2026 <span class="text-[#d4a373] font-semibold">Blade & Beard</span> Barbershop. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Terms of Service</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Cancellation Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Gift Cards</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="#barbers" class="back-top-link inline-flex items-center gap-2 text-[#7a6a60] text-xs font-semibold uppercase tracking-widest hover:text-[#d4a373] transition-colors">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT                                                   -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // ===== MOBILE DRAWER =====
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenuBtn.onclick = closeMenu;
+        drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // ===== THEME TOGGLE =====
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('barber-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme ? savedTheme === 'dark' : systemDark;
+
+        function setTheme(dark) {
+            if (dark) {
+                document.body.classList.add('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('barber-theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('barber-theme', 'light');
+            }
+        }
+
+        setTheme(isDark);
+
+        function toggleTheme() {
+            const currentlyDark = document.body.classList.contains('dark-mode');
+            setTheme(!currentlyDark);
+        }
+
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // ===== RTL TOGGLE =====
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR <i class="fas fa-arrow-right-arrow-left"></i>';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL <i class="fas fa-arrow-right-arrow-left"></i>';
+            }
+        }
+
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // ===== MOBILE DROPDOWN TOGGLE =====
+        (function() {
+            const homeToggle = document.getElementById('mobile-home-toggle');
+            const homeItems = document.getElementById('mobile-home-items');
+
+            if (homeToggle && homeItems) {
+                homeToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('open');
+                    homeItems.classList.toggle('open');
+                });
+            }
+        })();
+
+        // ===== MOBILE DRAWER ACTIVE LINK =====
+        (function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageName = currentPage.replace('.html', '');
+            const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-dropdown-link');
+            mobileLinks.forEach(link => link.classList.remove('active'));
+
+            let foundActive = false;
+            mobileLinks.forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage && linkPage === pageName) {
+                    link.classList.add('active');
+                    foundActive = true;
+                }
+                if (!foundActive) {
+                    const href = link.getAttribute('href');
+                    if (href && href === currentPage) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                    if (href && href === '#' + pageName) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                }
+            });
+
+            if (!foundActive && (pageName === '' || pageName === 'index')) {
+                const homeLinks = document.querySelectorAll('.mobile-link[data-page="index"], .mobile-dropdown-link[data-page="index"]');
+                homeLinks.forEach(link => link.classList.add('active'));
+                const homeItems = document.getElementById('mobile-home-items');
+                const homeToggle = document.getElementById('mobile-home-toggle');
+                if (homeItems && homeToggle) {
+                    homeItems.classList.add('open');
+                    homeToggle.classList.add('open');
+                }
+            }
+
+            if (window.location.hash) {
+                const hash = window.location.hash.replace('#', '');
+                const hashLinks = document.querySelectorAll(`.mobile-link[data-page="${hash}"]`);
+                hashLinks.forEach(link => link.classList.add('active'));
+                hashLinks.forEach(link => {
+                    const parentItems = link.closest('.mobile-dropdown-items');
+                    if (parentItems) {
+                        parentItems.classList.add('open');
+                        const header = parentItems.previousElementSibling;
+                        if (header && header.classList.contains('mobile-dropdown-header')) {
+                            header.classList.add('open');
+                        }
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-items.open').forEach(items => {
+                const header = items.previousElementSibling;
+                if (header && header.classList.contains('mobile-dropdown-header')) {
+                    header.classList.add('open');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

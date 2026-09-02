@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blade & Beard · Groom</title>
+    <link rel="icon" type="image/jpeg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d2d2d' rx='20'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle' fill='%23d4a373' font-family='Arial'%3E✂%3C/text%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                        display: ['"Poppins"', 'sans-serif'],
+                    },
+                    colors: {
+                        barber: {
+                            50: '#f5f0eb',
+                            100: '#e5dcd3',
+                            200: '#d4c4b8',
+                            300: '#c4ac9c',
+                            400: '#b39480',
+                            500: '#a37c64',
+                            600: '#8b6650',
+                            700: '#73503c',
+                            800: '#5b3d2e',
+                            900: '#432a20',
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f6f3;
+            color: #1a1a1a;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-color: #f8f6f3;
+            --bg-secondary: #f0ebe6;
+            --bg-card: #ffffff;
+            --bg-inverted: #1a1a1a;
+            --text-main: #1a1a1a;
+            --text-muted: #4a3f3a;
+            --text-dim: #7a6f6a;
+            --accent-color: #8b6650;
+            --accent-dark: #5b3d2e;
+            --accent-light: #f0ebe6;
+            --border-color: #d4c4b8;
+            --border-light: rgba(139, 102, 80, 0.15);
+            --nav-bg: rgba(255, 255, 255, 0.92);
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+            --menu-hover-bg: rgba(139, 102, 80, 0.08);
+            --shadow-color: rgba(139, 102, 80, 0.08);
+            --success-color: #4a3021;
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+        }
+
+        body.dark-mode {
+            --bg-color: #0f0a08;
+            --bg-secondary: #1a1210;
+            --bg-card: #241c18;
+            --bg-inverted: #f0ebe6;
+            --text-main: #e8ddd8;
+            --text-muted: #b0a098;
+            --text-dim: #7a6a60;
+            --accent-color: #d4a373;
+            --accent-dark: #b4835a;
+            --accent-light: #2a1e18;
+            --border-color: #3a2a22;
+            --border-light: rgba(212, 163, 115, 0.15);
+            --nav-bg: rgba(15, 10, 8, 0.92);
+            --drawer-bg: rgba(15, 10, 8, 0.98);
+            --menu-hover-bg: rgba(212, 163, 115, 0.10);
+            --shadow-color: rgba(212, 163, 115, 0.06);
+            --success-color: #d4a373;
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.30);
+            --card-hover-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1,
+        h2,
+        .brand-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700 !important;
+            letter-spacing: -0.01em;
+        }
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600 !important;
+            letter-spacing: -0.01em;
+        }
+        p {
+            font-weight: 400 !important;
+            line-height: 1.7;
+        }
+        b,
+        strong,
+        .font-bold {
+            font-weight: 700 !important;
+        }
+        .font-extrabold {
+            font-weight: 700 !important;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-bg);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .navbar.scrolled {
+            height: 52px;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            margin: 0 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== DROPDOWN ===== */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 58px;
+            left: 0;
+            transform: translateY(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        .navbar.scrolled .dropdown-menu {
+            top: 52px;
+        }
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            min-width: 200px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+        body.light-mode .dropdown-inner {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 22px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            text-align: left;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        .dropdown-item:hover {
+            background: var(--menu-hover-bg);
+            color: var(--accent-color);
+            padding-left: 28px;
+        }
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 22px;
+            padding-right: 28px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+            border-radius: 8px;
+            gap: 8px;
+        }
+        .btn-solid {
+            background: var(--accent-color);
+            color: #FFFFFF !important;
+        }
+        .btn-solid:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139, 102, 80, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .theme-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+            transform: rotate(20deg);
+        }
+
+        /* ===== MOBILE DRAWER ===== */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 1px solid var(--border-light);
+        }
+        [dir="rtl"] .fullscreen-menu {
+            right: auto;
+            left: 0;
+            transform: translateX(-100%);
+            border-left: none;
+            border-right: 1px solid var(--border-light);
+        }
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .mobile-link {
+            display: block;
+            width: 100%;
+            padding: 16px 28px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.25s;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-link:hover {
+            color: var(--accent-color);
+            padding-left: 36px;
+            background: var(--menu-hover-bg);
+        }
+        [dir="rtl"] .mobile-link:hover {
+            padding-left: 28px;
+            padding-right: 36px;
+        }
+
+        .mobile-link.active,
+        .mobile-dropdown-link.active {
+            color: var(--accent-color) !important;
+            background: var(--menu-hover-bg) !important;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 33px !important;
+        }
+        [dir="rtl"] .mobile-link.active,
+        [dir="rtl"] .mobile-dropdown-link.active {
+            border-left: none;
+            border-right: 3px solid var(--accent-color);
+            padding-left: 28px !important;
+            padding-right: 33px !important;
+        }
+
+        .mobile-menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mobile-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+        .mobile-dropdown-header:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+        .mobile-dropdown-header i {
+            transition: transform 0.3s ease;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .mobile-dropdown-header.open i {
+            transform: rotate(180deg);
+        }
+        .mobile-dropdown-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            padding-left: 16px;
+            background: var(--bg-secondary);
+        }
+        .mobile-dropdown-items.open {
+            max-height: 200px;
+            padding: 6px 0 10px 16px;
+        }
+        .mobile-dropdown-link {
+            border-bottom: none !important;
+            padding: 10px 28px !important;
+            font-size: 0.9rem !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 500 !important;
+            color: var(--text-muted) !important;
+        }
+        .mobile-dropdown-link:hover {
+            color: var(--accent-color) !important;
+            padding-left: 36px !important;
+            background: var(--menu-hover-bg) !important;
+        }
+        [dir="rtl"] .mobile-dropdown-link:hover {
+            padding-left: 28px !important;
+            padding-right: 36px !important;
+        }
+
+        /* ===== BRAND ===== */
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .brand-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(139, 102, 80, 0.3);
+            background: rgba(139, 102, 80, 0.12);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .brand-icon-wrapper i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .brand-icon-wrapper:hover {
+            background: rgba(139, 102, 80, 0.25);
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        .brand-logo span {
+            color: var(--accent-color);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 1px solid var(--border-light);
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.15;
+        }
+        .section-title span {
+            color: var(--accent-color);
+        }
+        .section-sub {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FOOTER — ALWAYS DARK ===== */
+        footer {
+            background: #0f0a08 !important;
+            border-top: 1px solid #2a1e18 !important;
+            padding-top: 60px;
+            color: #e8ddd8 !important;
+        }
+        footer h4 {
+            color: #e8ddd8 !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        footer a,
+        footer li,
+        footer span:not(.brand-logo span) {
+            color: #b0a098 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: #d4a373 !important;
+        }
+        footer .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #2a1e18 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #b0a098 !important;
+            background: transparent;
+        }
+        footer .social-circle:hover {
+            background: #d4a373 !important;
+            border-color: #d4a373 !important;
+            color: #0f0a08 !important;
+            transform: translateY(-3px);
+        }
+        footer .footer-bottom {
+            border-top: 1px solid #2a1e18 !important;
+            padding: 24px 0;
+            margin-top: 40px;
+        }
+        footer .footer-bottom p {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a {
+            color: #7a6a60 !important;
+        }
+        footer .footer-bottom a:hover {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-icon-wrapper {
+            border-color: rgba(212, 163, 115, 0.3) !important;
+            background: rgba(212, 163, 115, 0.12) !important;
+        }
+        footer .brand-link .brand-icon-wrapper i {
+            color: #d4a373 !important;
+        }
+        footer .brand-link .brand-logo {
+            color: #e8ddd8 !important;
+            font-size: 1.6rem;
+            font-weight: 700 !important;
+            letter-spacing: -0.5px;
+        }
+        footer .brand-link .brand-logo span {
+            color: #d4a373 !important;
+        }
+        footer .footer-bottom .text-accent {
+            color: #d4a373 !important;
+        }
+        footer .back-top-link {
+            color: #7a6a60 !important;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.3s;
+        }
+        footer .back-top-link:hover {
+            color: #d4a373 !important;
+        }
+        footer ul li i.fa-chevron-right {
+            color: #d4a373 !important;
+            font-size: 8px;
+        }
+        footer ul li a:hover {
+            padding-left: 12px !important;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @keyframes float-delayed {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float-delayed 4s ease-in-out 2s infinite;
+        }
+
+        @keyframes subtleZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.06);
+            }
+        }
+        .animate-zoom {
+            animation: subtleZoom 20s infinite alternate ease-in-out;
+        }
+
+       
+        .hero-badge-walkin {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hero-badge-walkin:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .navbar {
+                padding: 0 16px;
+                height: 64px;
+            }
+            .navbar.scrolled {
+                height: 58px;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .brand-logo {
+                font-size: 1.3rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.3rem !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                font-size: 1.1rem;
+            }
+            footer .brand-link .brand-logo {
+                font-size: 1.1rem !important;
+            }
+            footer .brand-link .brand-icon-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            footer .brand-link .brand-icon-wrapper i {
+                font-size: 1rem;
+            }
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .ml-auto {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        [dir="rtl"] .mr-auto {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-dark);
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+        .trust-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .rtl-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .rtl-toggle:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        /* ===== WALK-IN PAGE CUSTOM STYLES ===== */
+
+        /* Status Indicator Dots */
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse-dot 1.8s ease-in-out infinite;
+        }
+        .status-dot.green {
+            background: #4caf50;
+        }
+        .status-dot.yellow {
+            background: #ffc107;
+        }
+        .status-dot.red {
+            background: #f44336;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.85);
+            }
+        }
+
+        /* Chair indicator */
+        .chair-available {
+            background: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        .chair-occupied {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+        }
+
+        /* Service card hover */
+        .service-card-modern {
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: var(--card-shadow);
+        }
+        .service-card-modern:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--accent-color) !important;
+        }
+
+        /* Tip card */
+        .tip-card {
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        .tip-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            user-select: none;
+            gap: 16px;
+        }
+        .faq-question:hover {
+            color: var(--accent-color);
+            background: var(--menu-hover-bg);
+        }
+        .faq-question i {
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 20px 24px;
+        }
+
+        /* Live wait card */
+        .wait-card {
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+        .wait-card:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        /* Visit planner card */
+        .visit-card {
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+        .visit-card:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-3px);
+        }
+
+        /* Badge for service availability */
+        .avail-badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 12px;
+            border-radius: 50px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            border: 1px solid var(--border-light);
+        }
+        .avail-badge.always {
+            background: rgba(76, 175, 80, 0.12);
+            color: #4caf50;
+            border-color: rgba(76, 175, 80, 0.2);
+        }
+        .avail-badge.limited {
+            background: rgba(255, 193, 7, 0.12);
+            color: #f9a825;
+            border-color: rgba(255, 193, 7, 0.2);
+        }
+        .avail-badge.by-appointment {
+            background: rgba(33, 150, 243, 0.12);
+            color: #1e88e5;
+            border-color: rgba(33, 150, 243, 0.2);
+        }
+        body.dark-mode .avail-badge.always {
+            background: rgba(76, 175, 80, 0.2);
+            color: #66bb6a;
+        }
+        body.dark-mode .avail-badge.limited {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffd54f;
+        }
+        body.dark-mode .avail-badge.by-appointment {
+            background: rgba(33, 150, 243, 0.2);
+            color: #42a5f5;
+        }
+
+        /* Price tag */
+        .price-tag {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Hero CTA pulse ring */
+        .cta-pulse-ring {
+            position: relative;
+        }
+        .cta-pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            border: 2px solid rgba(212, 163, 115, 0.4);
+            animation: ring-pulse 2.5s ease-out infinite;
+        }
+        @keyframes ring-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.15);
+                opacity: 0;
+            }
+        }
+
+        /* Scroll reveal helper */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR – EXACT COPY                                          -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="main-nav">
+        <div class="w-full flex items-center justify-between max-w-[1440px] mx-auto">
+            <a href="index.html" class="brand-link">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <div class="brand-logo" style="color: var(--text-main) !important;">
+                    <span>Blade</span>&nbsp;Beard
+                </div>
+            </a>
+
+            <div class="hidden xl:flex justify-center items-center flex-1 gap-1">
+                <div class="dropdown">
+                    <div class="nav-link">
+                        Home <i class="fas fa-chevron-down text-[8px] ml-1 opacity-50"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="barbers.html" class="nav-link">Barbers</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="groom.html" class="nav-link active">Groom</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="hidden xl:flex items-center gap-3">
+                <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">SignUp</a>
+                <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
+                <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon-desktop"></i>
+                </button>
+                <button id="rtl-btn" class="rtl-toggle" title="Toggle LTR/RTL">LTR</button>
+            </div>
+
+            <div class="xl:hidden flex items-center justify-end gap-2">
+                <button id="mobile-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE DRAWER                                                -->
+    <!-- ============================================================ -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-5 py-5 flex justify-between items-center shrink-0 border-b border-[var(--border-light)]">
+            <a href="index.html" class="brand-link" onclick="closeMenu()">
+                <div class="brand-icon-wrapper">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <div class="brand-logo" style="color: var(--text-main) !important;">
+                    <span>Blade</span>&nbsp;Beard
+                </div>
+            </a>
+            <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col w-full overflow-y-auto flex-1 py-3">
+            <div class="mobile-dropdown">
+                <div class="mobile-dropdown-header" id="mobile-home-toggle">
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="mobile-dropdown-items" id="mobile-home-items">
+                    <a href="index.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="index">Home 1</a>
+                    <a href="home-2.html" class="mobile-link mobile-dropdown-link" onclick="closeMenu()" data-page="home-2">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-link" onclick="closeMenu()" data-page="about">About</a>
+            <a href="services.html" class="mobile-link" onclick="closeMenu()" data-page="services">Services</a>
+            <a href="barbers.html" class="mobile-link" onclick="closeMenu()" data-page="barbers">Barbers</a>
+            <a href="gallery.html" class="mobile-link" onclick="closeMenu()" data-page="gallery">Gallery</a>
+            <a href="groom.html" class="mobile-link" onclick="closeMenu()" data-page="groom">Groom</a>
+            <a href="contact.html" class="mobile-link" onclick="closeMenu()" data-page="contact">Contact</a>
+        </div>
+
+        <div class="w-full px-5 py-5 border-t border-[var(--border-light)] flex flex-col gap-4 shrink-0 bg-[var(--bg-secondary)]">
+            <div class="grid grid-cols-2 gap-3 w-full">
+                <a href="login.html" class="btn btn-outline w-full !py-3 text-center" onclick="closeMenu()" data-page="login">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                <a href="signup.html" class="btn btn-solid w-full !py-3 text-center" onclick="closeMenu()" data-page="signup">
+                    <i class="fas fa-user-plus mr-2"></i> Sign Up
+                </a>
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Theme</span>
+                    <button id="theme-toggle-mobile" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-[var(--text-dim)] font-medium text-[10px] uppercase tracking-widest">Dir</span>
+                    <button id="rtl-toggle-mobile" class="rtl-toggle" title="Toggle RTL/LTR">
+                        <span class="rtl-text">LTR</span>
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="contact.html" class="btn btn-solid w-full !py-2.5 text-center" onclick="closeMenu()">
+                <i class="fas fa-phone-alt mr-2" style="transform: scaleX(-1); display: inline-block;"></i> Call for Appointment
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HERO BANNER – WALK-IN                                        -->
+    <!-- ============================================================ -->
+    <section id="walkin" class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-[var(--border-light)]">
+        <div class="absolute inset-0 z-0">
+            <img src="img/hero2.webp"
+            alt="Barbershop walk-in"
+            class="w-full h-full object-cover scale-110 animate-zoom">
+            <div class="absolute inset-0 hero-overlay-walkin"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0f0a08]/85 via-[#0f0a08]/50 to-[#0f0a08]/75"></div>
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.3&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-3 hero-badge-walkin px-5 py-2.5 rounded-full mb-6 hover:bg-white/15 transition-all duration-300">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a373] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-[#d4a373]"></span>
+                </span>
+                <span class="text-white text-xs font-bold uppercase tracking-[0.2em]">
+                    <i class="fas fa-walking mr-2"></i> Walk-Ins Welcome
+                </span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white mb-5 drop-shadow-lg">
+                No Appointment? <br>
+                <span class="text-[#d4a373] drop-shadow-md relative">No Problem</span>
+            </h1>
+            <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                Drop by anytime – we'll get you in a chair as soon as possible. Check our live wait times and peak hours to plan your visit.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
+                <a href="#live-wait" class="group w-full sm:w-auto px-8 py-3.5 sm:px-10 sm:py-4 bg-[#d4a373] text-[#0f0a08] rounded-full font-semibold text-base sm:text-lg hover:scale-105 transition duration-300 shadow-lg shadow-[#d4a373]/30 hover:shadow-[#d4a373]/50 block relative overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center">
+                        <i class="fas fa-clock mr-2"></i> Check Live Wait Times
+                        <i class="fas fa-arrow-right ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-[#d4a373] to-[#b4835a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                </a>
+                <a href="#contact" class="group w-full sm:w-auto px-8 py-3.5 sm:px-10 sm:py-4 border-2 border-white text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0f0a08] transition duration-300 shadow-lg block relative overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-2" style="transform: scaleX(-1); display: inline-block;"></i> Call Ahead
+                        <i class="fas fa-arrow-right ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </span>
+                    <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+                </a>
+            </div>
+
+            <div class="mt-12 flex flex-wrap justify-center items-center gap-8 text-white/90">
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30">
+                        <i class="fas fa-chair text-[#d4a373] text-base"></i>
+                    </div>
+                    <span>10 Chairs Available</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30">
+                        <i class="fas fa-clock text-[#d4a373] text-base"></i>
+                    </div>
+                    <span>Avg. Wait: 15–30 min</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30">
+                        <i class="fas fa-calendar-day text-[#d4a373] text-base"></i>
+                    </div>
+                    <span>Open 7 Days a Week</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-sm font-medium hover:text-white transition-colors duration-200">
+                    <div class="w-9 h-9 rounded-full bg-[#d4a373]/20 flex items-center justify-center border border-[#d4a373]/30">
+                        <i class="fas fa-shield-alt text-[#d4a373] text-base"></i>
+                    </div>
+                    <span>First Come, First Served</span>
+                </div>
+            </div>
+
+            <div class="absolute -top-10 left-10 animate-float opacity-20 hidden lg:block">
+                <i class="fas fa-scissors text-6xl text-[#d4a373]"></i>
+            </div>
+            <div class="absolute -bottom-10 right-10 animate-float-delayed opacity-20 hidden lg:block">
+                <i class="fas fa-star text-6xl text-[#d4a373]"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: LIVE STATUS DASHBOARD                             -->
+    <!-- ============================================================ -->
+    <section id="live-wait" class="py-20 px-6 bg-[var(--bg-color)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="section-tag"><i class="fas fa-chart-simple mr-2"></i> Live Status</span>
+                <h2 class="section-title mt-4">Current <span>Shop Status</span></h2>
+                <p class="section-sub mx-auto mt-3">Real-time updates on wait times, availability, and peak hours.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Wait Time -->
+                <div class="wait-card bg-[var(--bg-card)] rounded-2xl p-8 text-center">
+                    <div class="flex items-center justify-center gap-3 mb-2">
+                        <span class="status-dot yellow"></span>
+                        <span class="text-[var(--text-dim)] text-xs font-semibold uppercase tracking-wider">Moderate Traffic</span>
+                    </div>
+                    <div class="text-5xl font-bold text-[var(--accent-color)] font-display">15–30</div>
+                    <p class="text-[var(--text-muted)] text-sm mt-1">Avg. Wait Time <span class="text-[var(--text-dim)]">(min)</span></p>
+                    <div class="mt-5 w-full bg-[var(--bg-secondary)] rounded-full h-2.5 overflow-hidden">
+                        <div class="bg-gradient-to-r from-[#d4a373] to-[#b4835a] h-2.5 rounded-full transition-all duration-1000" style="width: 45%"></div>
+                    </div>
+                    <div class="mt-3 flex justify-center gap-4 text-xs text-[var(--text-dim)]">
+                        <span><span class="font-semibold text-[var(--text-main)]">9am</span> ● Quiet</span>
+                        <span><span class="font-semibold text-[var(--text-main)]">12pm</span> ● Busy</span>
+                        <span><span class="font-semibold text-[var(--text-main)]">6pm</span> ● Moderate</span>
+                    </div>
+                </div>
+
+                <!-- Chairs -->
+                <div class="wait-card bg-[var(--bg-card)] rounded-2xl p-8 text-center">
+                    <div class="flex items-center justify-center gap-3 mb-2">
+                        <span class="status-dot green"></span>
+                        <span class="text-[var(--text-dim)] text-xs font-semibold uppercase tracking-wider">Good Availability</span>
+                    </div>
+                    <div class="text-5xl font-bold text-[var(--accent-color)] font-display">6 <span class="text-2xl text-[var(--text-dim)]">/ 10</span></div>
+                    <p class="text-[var(--text-muted)] text-sm mt-1">Chairs Available</p>
+                    <div class="mt-5 flex justify-center gap-1.5 flex-wrap">
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">1</span>
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">2</span>
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">3</span>
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">4</span>
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">5</span>
+                        <span class="w-7 h-7 rounded-full chair-available flex items-center justify-center text-[10px] text-white font-bold">6</span>
+                        <span class="w-7 h-7 rounded-full chair-occupied flex items-center justify-center text-[10px] text-[var(--text-dim)] font-bold">7</span>
+                        <span class="w-7 h-7 rounded-full chair-occupied flex items-center justify-center text-[10px] text-[var(--text-dim)] font-bold">8</span>
+                        <span class="w-7 h-7 rounded-full chair-occupied flex items-center justify-center text-[10px] text-[var(--text-dim)] font-bold">9</span>
+                        <span class="w-7 h-7 rounded-full chair-occupied flex items-center justify-center text-[10px] text-[var(--text-dim)] font-bold">10</span>
+                    </div>
+                    <p class="text-[var(--text-dim)] text-xs mt-3"><i class="fas fa-user text-[var(--accent-color)] mr-1.5"></i> 6 barbers on duty</p>
+                </div>
+
+                <!-- Peak Hours -->
+                <div class="wait-card bg-[var(--bg-card)] rounded-2xl p-8 text-center">
+                    <div class="flex items-center justify-center gap-3 mb-2">
+                        <span class="status-dot red"></span>
+                        <span class="text-[var(--text-dim)] text-xs font-semibold uppercase tracking-wider">Plan Ahead</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-6 text-sm">
+                        <div>
+                            <span class="block text-[var(--text-dim)] text-xs uppercase tracking-wider">Busiest</span>
+                            <span class="font-bold text-[var(--text-main)] text-lg font-display">12–2pm</span>
+                        </div>
+                        <div class="w-px h-10 bg-[var(--border-light)]"></div>
+                        <div>
+                            <span class="block text-[var(--text-dim)] text-xs uppercase tracking-wider">Quietest</span>
+                            <span class="font-bold text-[var(--text-main)] text-lg font-display">10–11am</span>
+                        </div>
+                    </div>
+                    <p class="text-[var(--text-muted)] text-sm mt-4">Visit during quieter hours for a shorter wait.</p>
+                    <div class="mt-4 flex justify-center items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#d4a373]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#d4a373]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#d4a373] opacity-70"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#d4a373] opacity-50"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#d4a373] opacity-30"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-light)]"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <p class="text-[var(--text-dim)] text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-sync-alt text-[var(--accent-color)] text-xs"></i>
+                    Last updated: <span id="live-timestamp">just now</span>
+                    <span class="text-[var(--border-color)] mx-2">|</span>
+                    <span class="inline-flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#4caf50] animate-pulse"></span>
+                        Live
+                    </span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: WALK-IN TIPS                                      -->
+    <!-- ============================================================ -->
+    <section class="py-20 px-6 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="section-tag"><i class="fas fa-lightbulb mr-2"></i> Insider Tips</span>
+                <h2 class="section-title mt-4">Make the Most of Your <span>Walk-In</span></h2>
+                <p class="section-sub mx-auto mt-3">Pro tips to help you get the best experience when you drop by without an appointment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Tip 1 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Come Early</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">We open at 9am. The first hour is usually the quietest — get in and out quickly.</p>
+                    </div>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Weekdays vs Weekends</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">Tuesdays &amp; Wednesdays are typically less busy. Saturdays are our busiest day.</p>
+                    </div>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-phone-alt" style="transform: scaleX(-1); display: inline-block;"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Call Ahead</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">Give us a ring 15–20 minutes before you arrive to check availability and hold your spot.</p>
+                    </div>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Group Visits</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">For groups of 3 or more, we recommend booking in advance to ensure we can seat you together.</p>
+                    </div>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Know What You Want</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">Have a style in mind or bring a photo. This helps our barbers deliver exactly what you're looking for.</p>
+                    </div>
+                </div>
+
+                <!-- Tip 6 -->
+                <div class="tip-card bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] flex items-start gap-4 hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-[var(--accent-color)] text-xl shrink-0">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[var(--text-main)] text-sm">Enjoy the Wait</h4>
+                        <p class="text-[var(--text-dim)] text-sm mt-1 leading-relaxed">We offer complimentary coffee, water, and Wi-Fi while you wait. Make yourself at home.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-[var(--text-muted)] text-sm">Still unsure? <a href="#walkin-faq" class="text-[var(--accent-color)] font-semibold hover:underline">Check our FAQ</a> or <a href="#contact" class="text-[var(--accent-color)] font-semibold hover:underline">contact us</a> for more advice.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: WALK-IN FAQ                                       -->
+    <!-- ============================================================ -->
+    <section id="walkin-faq" class="py-20 px-6 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="section-tag"><i class="fas fa-question-circle mr-2"></i> FAQ</span>
+                <h2 class="section-title mt-4">Walk-In <span>Questions</span></h2>
+                <p class="section-sub mx-auto mt-3">Everything you need to know about our walk-in policy. If you don't see your question, just ask!</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-[var(--bg-card)] rounded-2xl border border-[var(--border-light)] overflow-hidden divide-y divide-[var(--border-light)]">
+                <!-- FAQ 1 -->
+                <div class="faq-item active">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do I need an appointment to get a haircut?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No, we welcome walk-ins for all our services. However, during peak hours (12–2pm and Saturdays), wait times may be longer. You can always call ahead to check current availability.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What is the average wait time for walk-ins?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Typically 15–30 minutes, but it can vary. We recommend checking our live wait time indicator on this page or calling us before you come.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Can I request a specific barber as a walk-in?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! If your preferred barber is available, we'll seat you with them. If they're busy, you can wait or choose another talented barber from our team.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Are walk-ins more expensive than appointments?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No, our prices are the same whether you walk in or book in advance. We believe in transparent pricing for everyone.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What if I have a large group — can we all walk in?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        For groups of 3 or more, we strongly recommend booking ahead to ensure we have enough barbers available to seat you together. Give us a call and we'll sort it out.
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do you take walk-ins for beard trims and shaves?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! Beard trims and hot towel shaves are available on a walk-in basis. Wait times may be slightly longer for shaves as they require more time and attention.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-[var(--text-dim)] text-sm">Still have questions? <a href="contact.html" class="text-[var(--accent-color)] font-semibold hover:underline">Contact us</a> — we're happy to help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: PLAN YOUR VISIT                                   -->
+    <!-- ============================================================ -->
+    <section id="plan-visit" class="py-20 px-6 bg-[var(--bg-color)] border-b border-[var(--border-light)]">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="section-tag"><i class="fas fa-map-pin mr-2"></i> Plan Ahead</span>
+                <h2 class="section-title mt-4">Ready to <span>Visit?</span></h2>
+                <p class="section-sub mx-auto mt-3">We're here to make your walk-in experience as smooth as possible. Here's how to get started.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Call Ahead -->
+                <div class="visit-card bg-[var(--bg-card)] rounded-2xl p-8 text-center hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-5 text-2xl text-[var(--accent-color)]">
+                        <i class="fas fa-phone-alt" style="transform: scaleX(-1); display: inline-block;"></i>
+                    </div>
+                    <h3 class="font-bold text-[var(--text-main)] text-xl">Call Ahead</h3>
+                    <p class="text-[var(--text-muted)] text-sm mt-3 leading-relaxed">Give us a ring to check current wait times and let us know you're on your way.</p>
+                    <a href="tel:+15552345678" class="text-[var(--accent-color)] font-bold text-xl block mt-4 hover:underline font-display">+1 (555) 234-5678</a>
+                    <p class="text-[var(--text-dim)] text-xs mt-2">We'll hold a spot for you for 15 minutes.</p>
+                </div>
+
+                <!-- Get Directions -->
+                <div class="visit-card bg-[var(--bg-card)] rounded-2xl p-8 text-center hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-5 text-2xl text-[var(--accent-color)]">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="font-bold text-[var(--text-main)] text-xl">Find Us</h3>
+                    <p class="text-[var(--text-muted)] text-sm mt-3 leading-relaxed">We're located at the corner of Main and 5th, right next to the Central Park entrance.</p>
+                    <address class="not-italic text-[var(--text-main)] font-medium mt-3 text-sm">123 Main Street, Suite 2B<br>New York, NY 10001</address>
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 text-[var(--accent-color)] font-semibold mt-4 hover:underline text-sm">
+                        <i class="fas fa-external-link-alt"></i> Get Directions
+                    </a>
+                </div>
+
+                <!-- Check Hours -->
+                <div class="visit-card bg-[var(--bg-card)] rounded-2xl p-8 text-center hover:border-[var(--accent-color)] transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-5 text-2xl text-[var(--accent-color)]">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-[var(--text-main)] text-xl">Opening Hours</h3>
+                    <div class="mt-4 space-y-2 text-sm">
+                        <div class="flex justify-between items-center border-b border-[var(--border-light)] pb-2">
+                            <span class="text-[var(--text-dim)]">Mon – Fri</span>
+                            <span class="font-semibold text-[var(--text-main)]">9:00 AM – 8:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-[var(--border-light)] pb-2">
+                            <span class="text-[var(--text-dim)]">Saturday</span>
+                            <span class="font-semibold text-[var(--text-main)]">9:00 AM – 8:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[var(--text-dim)]">Sunday</span>
+                            <span class="font-semibold text-[var(--text-main)]">10:00 AM – 6:00 PM</span>
+                        </div>
+                    </div>
+                    <p class="text-[var(--text-dim)] text-xs mt-4">We're open 7 days a week — walk-ins always welcome!</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-[var(--bg-card)] rounded-2xl p-6 border border-[var(--border-light)] text-center max-w-2xl mx-auto">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a373] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-[#d4a373]"></span>
+                        </span>
+                        <span class="text-[var(--text-main)] font-semibold">We're open now!</span>
+                    </div>
+                    <div class="w-px h-8 bg-[var(--border-light)] hidden sm:block"></div>
+                    <p class="text-[var(--text-dim)] text-sm">No appointment needed — just walk in and we'll take care of you.</p>
+                    <a href="contact.html" class="btn btn-solid !py-2 !px-6 !text-[10px] shrink-0">
+                        <i class="fas fa-envelope mr-1"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER – EXACT COPY                                         -->
+    <!-- ============================================================ -->
+    <footer>
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <a href="index.html" class="brand-link inline-flex">
+                        <div class="brand-icon-wrapper">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="brand-logo" style="color: #e8ddd8 !important; font-size: 1.6rem; font-weight: 700 !important; letter-spacing: -0.5px;">
+                            <span style="color: #d4a373 !important;">Blade</span><span style="color: #e8ddd8 !important;">&nbsp;Beard</span>
+                        </div>
+                    </a>
+                    <p class="text-[#b0a098] text-sm leading-relaxed mt-4">Premium men's grooming since 2012. We combine classic barbering techniques with modern style.</p>
+                    <div class="flex gap-3 mt-5">
+                        <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-circle"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Home</a></li>
+                        <li><a href="about.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> About</a></li>
+                        <li><a href="services.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Services</a></li>
+                        <li><a href="barbers.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Barbers</a></li>
+                        <li><a href="gallery.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Gallery</a></li>
+                        <li><a href="walkin.html" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Groom</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Our Services</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Signature Haircut</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Beard Trim &amp; Shape</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hot Towel Head Shave</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Hair Coloring</a></li>
+                        <li><a href="services.html#services-list" class="hover:pl-2 transition-all inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-[#d4a373]"></i> Scalp Treatment</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Visit Us</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]">123 Main Street, Suite 2B, New York, NY 10001</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]"><a href="tel:+15552345678" class="hover:text-[#d4a373]">+1 (555) 234-5678</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]"><a href="mailto:hello@bladeandbeard.com" class="hover:text-[#d4a373]">hello@bladeandbeard.com</a></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-[#d4a373] mt-0.5"></i>
+                            <span class="text-[#b0a098]">Mon–Sat: 9:00 AM – 8:00 PM · Sun: 10:00 AM – 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-[#7a6a60]">&copy; 2026 <span class="text-[#d4a373] font-semibold">Blade &amp; Beard</span> Barbershop. All rights reserved.</p>
+                <div class="flex flex-wrap gap-6 text-sm">
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Terms of Service</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Cancellation Policy</a>
+                    <a href="#" class="text-[#7a6a60] hover:text-[#d4a373] transition-colors">Gift Cards</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="#walkin" class="back-top-link inline-flex items-center gap-2 text-[#7a6a60] text-xs font-semibold uppercase tracking-widest hover:text-[#d4a373] transition-colors">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT                                                  -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // ===== MOBILE DRAWER =====
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenuBtn.onclick = closeMenu;
+        drawerOverlay.onclick = closeMenu;
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) closeMenu();
+        });
+
+        // ===== THEME TOGGLE =====
+        const themeDesk = document.getElementById('theme-toggle-desktop');
+        const themeMob = document.getElementById('theme-toggle-mobile');
+        const iconDesk = document.getElementById('theme-icon-desktop');
+        const iconMob = document.getElementById('theme-icon-mobile');
+
+        const savedTheme = localStorage.getItem('barber-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme ? savedTheme === 'dark' : systemDark;
+
+        function setTheme(dark) {
+            if (dark) {
+                document.body.classList.add('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-sun';
+                if (iconMob) iconMob.className = 'fas fa-sun';
+                localStorage.setItem('barber-theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (iconDesk) iconDesk.className = 'fas fa-moon';
+                if (iconMob) iconMob.className = 'fas fa-moon';
+                localStorage.setItem('barber-theme', 'light');
+            }
+        }
+
+        setTheme(isDark);
+
+        function toggleTheme() {
+            const currentlyDark = document.body.classList.contains('dark-mode');
+            setTheme(!currentlyDark);
+        }
+
+        if (themeDesk) themeDesk.addEventListener('click', toggleTheme);
+        if (themeMob) themeMob.addEventListener('click', toggleTheme);
+
+        // ===== RTL TOGGLE =====
+        const rtlBtn = document.getElementById('rtl-btn');
+        const rtlMob = document.getElementById('rtl-toggle-mobile');
+        const rtlTexts = document.querySelectorAll('.rtl-text');
+
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.dir === 'rtl') {
+                html.dir = 'ltr';
+                rtlTexts.forEach(el => el.textContent = 'LTR');
+                if (rtlBtn) rtlBtn.innerHTML = 'LTR <i class="fas fa-arrow-right-arrow-left"></i>';
+            } else {
+                html.dir = 'rtl';
+                rtlTexts.forEach(el => el.textContent = 'RTL');
+                if (rtlBtn) rtlBtn.innerHTML = 'RTL <i class="fas fa-arrow-right-arrow-left"></i>';
+            }
+        }
+
+        if (rtlBtn) rtlBtn.addEventListener('click', toggleRTL);
+        if (rtlMob) rtlMob.addEventListener('click', toggleRTL);
+
+        // ===== MOBILE DROPDOWN TOGGLE =====
+        (function() {
+            const homeToggle = document.getElementById('mobile-home-toggle');
+            const homeItems = document.getElementById('mobile-home-items');
+
+            if (homeToggle && homeItems) {
+                homeToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('open');
+                    homeItems.classList.toggle('open');
+                });
+            }
+        })();
+
+        // ===== MOBILE DRAWER ACTIVE LINK =====
+        (function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageName = currentPage.replace('.html', '');
+            const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-dropdown-link');
+
+            mobileLinks.forEach(link => link.classList.remove('active'));
+
+            let foundActive = false;
+            mobileLinks.forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage && linkPage === pageName) {
+                    link.classList.add('active');
+                    foundActive = true;
+                }
+                if (!foundActive) {
+                    const href = link.getAttribute('href');
+                    if (href && href === currentPage) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                    if (href && href === '#' + pageName) {
+                        link.classList.add('active');
+                        foundActive = true;
+                    }
+                }
+            });
+
+            if (!foundActive && (pageName === '' || pageName === 'index')) {
+                const homeLinks = document.querySelectorAll('.mobile-link[data-page="index"], .mobile-dropdown-link[data-page="index"]');
+                homeLinks.forEach(link => link.classList.add('active'));
+                const homeItems = document.getElementById('mobile-home-items');
+                const homeToggle = document.getElementById('mobile-home-toggle');
+                if (homeItems && homeToggle) {
+                    homeItems.classList.add('open');
+                    homeToggle.classList.add('open');
+                }
+            }
+
+            if (window.location.hash) {
+                const hash = window.location.hash.replace('#', '');
+                const hashLinks = document.querySelectorAll(`.mobile-link[data-page="${hash}"]`);
+                hashLinks.forEach(link => link.classList.add('active'));
+                hashLinks.forEach(link => {
+                    const parentItems = link.closest('.mobile-dropdown-items');
+                    if (parentItems) {
+                        parentItems.classList.add('open');
+                        const header = parentItems.previousElementSibling;
+                        if (header && header.classList.contains('mobile-dropdown-header')) {
+                            header.classList.add('open');
+                        }
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-items.open').forEach(items => {
+                const header = items.previousElementSibling;
+                if (header && header.classList.contains('mobile-dropdown-header')) {
+                    header.classList.add('open');
+                }
+            });
+        })();
+
+        // ===== LIVE TIMESTAMP =====
+        (function() {
+            const ts = document.getElementById('live-timestamp');
+            if (ts) {
+                const now = new Date();
+                ts.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                setInterval(() => {
+                    const now2 = new Date();
+                    ts.textContent = now2.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                }, 30000);
+            }
+        })();
+    </script>
+</body>
+</html>
