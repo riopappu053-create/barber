@@ -782,6 +782,9 @@
             transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: var(--card-shadow);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .gallery-card:hover {
             transform: translateY(-10px);
@@ -880,6 +883,10 @@
         }
         .gallery-card .card-body {
             padding: 16px 20px 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         .gallery-card .card-body h4 {
             font-size: 1rem;
@@ -894,8 +901,9 @@
         .gallery-card .card-body .stats {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 14px;
-            margin-top: 10px;
+            margin-top: auto;
             padding-top: 10px;
             border-top: 1px solid var(--border-light);
             font-size: 0.72rem;
@@ -1131,7 +1139,7 @@
             </div>
             <div class="hidden xl:flex items-center gap-3">
                 <a href="login.html" class="btn btn-outline !py-1.5 !px-5 !text-[10px]">Login</a>
-                <a href="signup.html" class="btn btn-solid !py-1.5 !px-5 !text-[10px]">SignUp</a>
+
                 <div class="w-px h-5 bg-[var(--border-light)] mx-1"></div>
                 <button id="theme-toggle-desktop" class="theme-btn" aria-label="Toggle theme">
                     <i class="fas fa-moon" id="theme-icon-desktop"></i>
